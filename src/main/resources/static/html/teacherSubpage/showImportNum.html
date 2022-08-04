@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show</title>
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="Andx-Editor-master/1.1.3/andx/editor.js"></script>
+    <link rel="stylesheet" type="text/css" href="Andx-Editor-master/1.1.3/andx/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/universal.css">
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+
+    <style>
+
+    </style>
+
+    <script>
+        $(function () {
+            function getUrlParam(name) {
+                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                let r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                if (r != null) return unescape(r[2]);
+                return null; //返回参数值
+            }
+
+            let parseS = window.location.href.split("?");
+            let parseSst = parseS[1].split("#");
+            let type = parseSst[1].split("=");
+            let num = parseSst[0].split("=");
+            if (type[1] === "no") {
+                let btn = $("#return");
+                btn.removeClass();
+                btn.addClass("btn");
+                btn.addClass("btn-danger");
+                btn.addClass("buttonStyle");
+                $("#node").css("color", "red");
+                $("#node").text("上传失败,格式错误!");
+            } else {
+                $("#node").text("上传成功,共解析" + num[1] + "条数据!");
+            }
+
+            $("#return").click(function () {
+                history.back();
+            })
+        })
+    </script>
+
+</head>
+<body>
+<div id="accomplish">
+    <div style="text-align: center; height: 50px; width: 100%;">
+        <label class="messageText" id="node" style="color: green; font-size: 50px"></label>
+        <br/>
+        <button id="return" class="btn btn-success" style="width: 200px;">确定</button>
+    </div>
+</div>
+</body>
+</html>

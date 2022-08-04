@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        label {
+            color: rgb(151, 129, 235);
+            font-family: 楷体, 微软雅黑, serif;
+            font-size: 30px;
+            text-indent: 2em
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/stuQueryTestPaperServlet",
+                type: "post",
+                data: {"get_my_stuId": ""},
+                success: function (myId) {
+                    if (myId === "null") {
+                        alert("查询失败，未连接到服务器！");
+                        return;
+                    }
+                    $("#explain").text("    选中考试信息后点击考试信息后开始考试，每次考试的试卷内容都不相同，做完之后可以按最底下的提交按钮就可以提交了，也可以等规定时间结束后系统自动提交，如果考试中途退出，\n" +
+                        "    或者关闭浏览器或关闭页面，试卷会自动销毁，重新登录后会生成信息试卷。"
+                        + "你的编号是：" + myId);
+                },
+                error() {
+                    $("#explain").text("    选中考试信息后点击考试信息后开始考试，每次考试的试卷内容都不相同，做完之后可以按最底下的提交按钮就可以提交了，也可以等规定时间结束后系统自动提交，如果考试中途退出，\n" +
+                        "    或者关闭浏览器或关闭页面，试卷会自动销毁，重新登录后会生成信息试卷。");
+                    alert("连接服务器失败");
+                }
+            });
+        })
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">在线考试系统说明</h1>
+<label id="explain">
+
+</label>
+</body>
+</html>

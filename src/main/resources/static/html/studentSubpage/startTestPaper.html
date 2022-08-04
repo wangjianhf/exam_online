@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 楷体, 微软雅黑, serif;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        input[type='radio']:after {
+            width: 14px;
+            height: 14px;
+            border-radius: 15px;
+            top: -9.8px;
+            left: 1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 14px;
+            height: 14px;
+            border-radius: 15px;
+            top: -9.9px;
+            left: 1px;
+            position: relative;
+            background-color: green;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        .gradeLabel_two {
+            font-family: 楷体, 微软雅黑, serif;
+            margin-left: 50px;
+            font-size: 35px;
+            font-weight: 400;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        $(function () {
+            window.onbeforeunload = onbeforeunload_handler;
+            window.onunload = onunload_handler;
+            function onbeforeunload_handler(){
+                var warning="确认退出?";
+                return warning;
+            }
+
+            function onunload_handler(){
+                var warning="加油!";
+                alert(warning);
+            }
+        });
+
+        $(function () {
+            $("#testPaperArea").hide();
+            $("#noBeginningArea").hide();
+            $("#finishArea").hide();
+            $("#otherLocation").hide();
+            $("#complete").hide();
+
+            function Student_test_paper() {
+                this.stuId = 0;
+                this.tpId = 0;
+                this.node = "";
+                this.answer = "";
+                this.grade = -1;
+            }
+
+            function TopicSet() {
+                var singleChoices;
+                var multipleChoiceQuestions;
+                var judgeQuestions;
+                var gapFillings;
+                var essayQuestions;
+            }
+
+            function TestPaperGrate() {
+                this.tpId = 0;
+                this.scGrate = 0;
+                this.msqGrate = 0;
+                this.jqGrate = 0;
+                this.gfGrate = 0;
+                this.eqGrate = 0;
+            }
+
+            //参数为毫秒值,设置开始时间盒子
+            function startTimeFun(date, id) {
+                var today = new Date(date);
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();// 在小于10的数字前加一个‘0’
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById(id).innerHTML = h + ":" + m + ":" + s;
+                if ($("#startTimeBox").text() === $("#endTimeBox").text()) {
+                    $("#submitBtn").click();
+                    $("#testPaperArea").fadeOut(300, "linear");
+                    $("#finishArea > div >label").css("color", "green");
+                    $("#finishArea > div >label").text("考试结束,试卷已自动提交!");
+                    $("#finishArea").fadeIn(300, "linear");
+                }
+
+                t = setTimeout(function () {
+                    startTimeFun(date + 500, id);
+                }, 500);
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+
+            //参数为毫秒值,设置结束时间盒子
+            function setEndTime(date, id) {
+                var today = new Date(date);
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();// 在小于10的数字前加一个‘0’
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById(id).innerHTML = h + ":" + m + ":" + s;
+            }
+
+
+            $.ajax({
+                url: "/queryTestPaperServlet",
+                type: "post",
+                data: {"query_testPaper_node": "query"},
+                success: function (resultStr) {
+                    //如果没有到开始时间
+                    if (resultStr === "no_beginning") {
+                        $.ajax({
+                            url: "/queryTestPaperServlet",
+                            type: "post",
+                            data: {"query_testPaper_time": "query"},
+                            success: function (resultStr) {
+                                let time = resultStr.split("#####");
+                                let endTime = new Date(parseInt(time[0]));
+
+                                //显示开始时间
+                                setEndTime(endTime.getTime(), "startTPTime");
+                                $("#noBeginningArea").fadeIn(300, "linear");
+                            }
+                        });
+                        return;
+                    } else if (resultStr === "already_over") {
+                        //考试时间已经结束
+                        $("#finishArea").fadeIn(300, "linear");
+                        return;
+                    }
+                    let location = resultStr.split("###");
+                    if (location[0] === "other_location") {
+                        $("#otherLocation").fadeIn(300, "linear");
+                        $("#otherLocation_label").text("你已在设备:" + location[1] + " 登录");
+                        return;
+                    }
+
+                    //获取试卷内容
+                    let testPaperNode = JSON.parse(resultStr);
+                    let topicSet = JSON.parse(testPaperNode.node);
+
+                    //查询题目分数
+                    $.ajax({
+                        url: "/queryTestPaperServlet",
+                        type: "post",
+                        data: {"queryTestPaperGrate": "" + testPaperNode.tpId},
+                        success: function (resultStr) {
+                            if (resultStr === "failure") {
+                                alert("获取试卷编号:" + testPaperNode.tpId + " 分数失败!");
+                                return;
+                            }
+                            let grate = JSON.parse(resultStr);
+                            console.log(topicSet);
+                            $("#sg_Grade").text("共" + (topicSet.singleChoices.length) + "题," + "每题" + grate.scGrate + "分");
+
+                            $("#mcq_Grade").text("共" + (topicSet.multipleChoiceQuestions.length) + "题," + "每题" + grate.msqGrate + "分");
+
+                            $("#jq_Grade").text("共" + (topicSet.judgeQuestions.length) + "题," + "每题" + grate.jqGrate + "分");
+
+                            $("#gf_Grade").text("共" + (topicSet.gapFillings.length) + "题," + "每题" + Math.round(grate.gfGrate / topicSet.gapFillings.length) + "分");
+
+                            $("#eq_Grade").text("共" + (topicSet.essayQuestions.length) + "题," + "每题" + Math.round(grate.eqGrate / topicSet.essayQuestions.length) + "分");
+
+                        }, error() {
+                            alert("连接服务器失败!");
+                        }
+                    });
+
+                    //查询当前是否提交
+                    let uploading = "" + testPaperNode.tpId + "###" + testPaperNode.stuId;
+                    window.status = "yes";
+                    $.ajax({
+                        url: "/queryTestPaperServlet",
+                        type: "post",
+                        data: {"query_student_topic_t": uploading},
+                        success: function (resultStr) {
+                            //不符合考试条件
+                            if (resultStr !== "OK") {
+                                $("#complete").fadeIn(300, "linear");
+                                $("#testPaperArea").hide();
+                            } else {
+                                $("#testPaperArea").fadeIn(300, "linear");
+                            }
+                        }, error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+
+                    //查询考试时间
+                    $.ajax({
+                        url: "/queryTestPaperServlet",
+                        type: "post",
+                        data: {"query_testPaper_time": "query"},
+                        success: function (resultStr) {
+                            var time = resultStr.split("#####");
+                            var endTime = new Date(parseInt(time[1]));
+                            setEndTime(endTime.getTime(), "endTimeBox");
+                        }, error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+
+                    //查询当前时间
+                    $.ajax({
+                        url: "/queryTestPaperServlet",
+                        type: "post",
+                        data: {"query_current_time": "query"},
+                        success: function (resultStr) {
+                            if (resultStr === "fail") {
+                                return;
+                            }
+                            var startTime = new Date(parseInt(resultStr));
+                            startTimeFun(startTime.getTime(), "startTimeBox");
+                        }, error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+
+                    //查询当前试卷标题
+                    $.ajax({
+                        url: "/queryTestPaperServlet",
+                        type: "post",
+                        data: {"query_TP_title": "" + testPaperNode.tpId},
+                        success: function (resultStr) {
+                            if (resultStr === "fail") {
+                                alert("获取试卷标题失败!");
+                                return;
+                            }
+                            let titleNode = resultStr.split("###");
+                            $("#headlineLabel").text(titleNode[0]);
+                            $("#subtitleLabel").text(titleNode[1]);
+                        }, error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+
+                    //单选题--------------------------------------------------------------
+                    for (let i = 0; i < topicSet.singleChoices.length; i++) {
+                        let divBox = $("<div>" + "</div>");
+                        let topic = $("<label class='topicLabelStyle'>" + "（" + (i + 1) + "）" + topicSet.singleChoices[i].topic + "</label>");
+                        divBox.append(topic);
+
+                        let optionBox = $("<div class='optionsBox scAnswerBox'>" + "</div>");
+                        let options = topicSet.singleChoices[i].option.split("###");
+                        let className = "sc_" + i;
+                        for (let j = 0; j < 4; j++) {
+                            var top = $("<label class='optionsLable' for='" + (i * 100 + j) + "'>" + "<input id='" + (i * 100 + j) + "' type='radio' value='f' class='inputRadioBox " + className + "' name='select_" + i + "'>" + options[j] + "</label>");
+                            optionBox.append(top);
+                        }
+                        divBox.append(optionBox);
+                        $("#SingleChoiceTopicSet").append(divBox);
+                    }
+
+                    //多选题--------------------------------------------------------------
+                    for (let i = 0; i < topicSet.multipleChoiceQuestions.length; i++) {
+                        let divBox = $("<div>" + "</div>");
+                        let topic = $("<label class='topicLabelStyle'>" + "（" + (i + 1) + "）" + topicSet.multipleChoiceQuestions[i].topic + "</label>");
+                        divBox.append(topic);
+                        let classNome = "mcq_" + i;
+                        let optionBox = $("<div class='optionsBox mcqAnswer'>" + "</div>");
+                        let options = topicSet.multipleChoiceQuestions[i].option.split("###");
+                        for (let j = 0; j < 4; j++) {
+                            let top = $("<label for='A" + (i + j * 20 + 1) + "' class='optionsLable'>"
+                                + "<input id='A" + (i + j * 20 + 1) + "' value='f' type='checkbox' class='inputBox " + classNome + "'>" + options[j] + "</label>");
+                            optionBox.append(top);
+                        }
+                        divBox.append(optionBox);
+                        $("#MultipleChoiceQuestionTopicSet").append(divBox);
+                    }
+
+                    //判断题--------------------------------------------------------------
+                    for (let i = 0; i < topicSet.judgeQuestions.length; i++) {
+                        let $div = $("<div></div>");
+                        let className = "jq_" + i;
+                        let topic = $("<label class='topicLabelStyle jqAnswer'>" + "（" + (i + 1) + "）" + topicSet.judgeQuestions[i].topic
+                            + " " + "<input type='checkbox' value='f' class='inputBox " + className + "' style='height: 24px;width: 24px;'>" + " </label>");
+                        $($div).append(topic);
+                        $("#JudgeQuestionTopicSet").append($div);
+                    }
+
+                    //填空题--------------------------------------------------------------
+                    for (let index = 0; index < topicSet.gapFillings.length; index++) {
+                        let $div = $("<div class='gfAnswer'></div>");
+                        let className = "gf_" + index;
+                        let node = topicSet.gapFillings[index].topic.replaceAll("___", "<input type='text' class='answerInput " + className + "'/>");
+                        let topic = $("<label class='topicLabelStyle'>" + "（" + (index + 1) + "）" + node + " </label>");
+                        $($div).append(topic);
+                        $("#GapFillingTopicSet").append($div);
+                    }
+
+                    //简答题--------------------------------------------------------------
+                    for (let index = 0; index < topicSet.essayQuestions.length; index++) {
+                        let $div = $("<div class='eqAnswer'></div>");
+                        let topic = $("<label class='topicLabelStyle'>" + "（" + (index + 1) + "）" + topicSet.essayQuestions[index].topic + " </label>");
+                        $($div).append();
+                        let className = "eq_" + index;
+                        let text = $('<textarea style="resize: none; margin-bottom: 50px;font-size: 24px" class="form-control col-md-8 ' + className + '" rows="3" id="inputBriefIntroduction" placeholder="请输入答案"></textarea>')
+                        $($div).append(topic);
+                        $($div).append(text);
+                        $("#EssayQuestionTopicSet").append($div);
+                    }
+
+
+                    //--------------------------------------------------------------------------------------------
+
+                    for (let index = 0; index < topicSet.singleChoices.length; index++) {
+                        topicSet.singleChoices[index].answer = "ffff";
+                    }
+
+                    for (let index = 0; index < topicSet.multipleChoiceQuestions.length; index++) {
+                        topicSet.multipleChoiceQuestions[index].answer = "ffff";
+                    }
+
+                    for (let index = 0; index < topicSet.judgeQuestions.length; index++) {
+                        let id = $((".jqAnswer > .jq_" + index));
+                        topicSet.judgeQuestions[index].answer = "f";
+                    }
+
+
+                    for (let index = 0; index < topicSet.singleChoices.length; index++) {
+                        let id = $((".scAnswerBox > .optionsLable > .sc_" + index));
+                        $(id).click(function () {
+                            $(id).each(function () {
+                                $(this).val("f");
+                            });
+                            $(this).val("t");
+                            let valueSet = $(id);
+                            let answer = valueSet.eq(0).val() + valueSet.eq(1).val() + valueSet.eq(2).val() + valueSet.eq(3).val();
+                            topicSet.singleChoices[index].answer = answer;
+                        });
+                    }
+
+                    for (let index = 0; index < topicSet.multipleChoiceQuestions.length; index++) {
+                        let id = $((".mcqAnswer > .optionsLable > .mcq_" + index));
+                        $(id).click(function () {
+                            $(id).each(function () {
+                                if (this.checked === true) {
+                                    $(this).val("t");
+                                } else {
+                                    $(this).val("f");
+                                }
+                            });
+                            $(this).val("t");
+                            let valueSet = $(id);
+                            let answer = valueSet.eq(0).val() + valueSet.eq(1).val() + valueSet.eq(2).val() + valueSet.eq(3).val();
+                            topicSet.multipleChoiceQuestions[index].answer = answer;
+                        });
+                    }
+
+                    for (let index = 0; index < topicSet.judgeQuestions.length; index++) {
+                        let id = $((".jqAnswer > .jq_" + index));
+                        $(id).click(function () {
+                            if (this.checked === true) {
+                                $(this).val("t");
+                            } else {
+                                $(this).val("f");
+                            }
+                            topicSet.judgeQuestions[index].answer = $(this).val();
+                        });
+                    }
+
+
+                    $("#submitBtn").click(function () {
+
+                        let textSer = $(":input[type=text]");
+                        for (let i = 0, len = textSer.length; i < len; i++) {
+                            if (textSer.eq(i).val().length > 50) {
+                                alert("错误,填空题有一项输入的文字大于50");
+                                return;
+                            }
+                        }
+
+
+                        let textareaSet = $("textarea");
+                        for (let i = 0, len = textareaSet.length; i < len; i++) {
+                            if (textareaSet.eq(i).val().length > 500) {
+                                alert("错误,简答题题有一项输入的文字大于500");
+                                return;
+                            }
+                        }
+
+                        //填空题--------------------------------------------------
+                        for (let index = 0; index < topicSet.gapFillings.length; index++) {
+                            let id = $((".gfAnswer >.topicLabelStyle > .gf_" + index));
+                            let answer = "";
+                            id.each(function () {
+                                if ($(this).val() === "") {
+                                    answer += "null" + "###";
+                                } else {
+                                    answer += $(this).val() + "###";
+                                }
+                            });
+                            topicSet.gapFillings[index].answer = answer.slice(0, -3);
+                        }
+
+                        //简答题--------------------------------------------------
+                        for (let index = 0; index < topicSet.essayQuestions.length; index++) {
+                            let id = $((".eqAnswer > .eq_" + index));
+                            let answer = $(id).val();
+                            topicSet.essayQuestions[index].answer = answer;
+                        }
+
+                        testPaperNode.answer = JSON.stringify(topicSet);
+
+                        let uploading = JSON.stringify(testPaperNode);
+
+                        //查询当前是否提交
+                        $.ajax({
+                            url: "/queryTestPaperServlet",
+                            type: "post",
+                            data: {"add_student_topic": uploading},
+                            success: function (resultStr) {
+                                if (resultStr === "succeed") {
+                                    $("#testPaperArea").hide();
+                                    $("#complete").fadeIn(300, "linear");
+                                    alert("试卷提交成功！");
+                                } else {
+                                    alert("试卷提交错误,未知错误!");
+                                }
+                            }, error() {
+                                alert("连接服务器失败");
+                            }
+                        });
+                    });
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body style="padding: 30px">
+<div id="titleBox">
+    <h1 class="mainTitle" id="headlineLabel"></h1>
+    <h3 class="mainTitle" id="subtitleLabel" style="margin-bottom: 40px"></h3>
+</div>
+<div id="testPaperArea">
+    <label class="startShowTimeStyle">当前时间：</label><label id="startTimeBox" class="startShowTimeStyle"></label>
+    <label id="endTimeBox" class="endShowTimeStyle"></label><label class="endShowTimeStyle">结束时间：</label>
+    <br/>
+    <h2 class='topicStyle'>一、单选题</h2><label id="sg_Grade" class="gradeLabel_two"></label>
+    <div id="SingleChoiceTopicSet" class="topicBox">
+
+    </div>
+
+    <h2 class='topicStyle'>二、多选题</h2><label id="mcq_Grade" class="gradeLabel_two"></label>
+    <div id="MultipleChoiceQuestionTopicSet" class="topicBox">
+
+    </div>
+
+    <h2 class='topicStyle'>三、判断题</h2><label id="jq_Grade" class="gradeLabel_two"></label>
+    <div id="JudgeQuestionTopicSet" class="topicBox">
+
+    </div>
+
+    <h2 class='topicStyle'>四、填空题</h2><label id="gf_Grade" class="gradeLabel_two"></label>
+    <div id="GapFillingTopicSet" class="topicBox">
+
+    </div>
+
+
+    <h2 class='topicStyle'>五、简答题</h2><label id="eq_Grade" class="gradeLabel_two"></label>
+    <div id="EssayQuestionTopicSet" class="topicBox">
+
+    </div>
+
+    <div class="form-group buttonBox">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px; margin-bottom: 40px;"
+                    id="submitBtn">提交试卷
+            </button>
+        </center>
+    </div>
+
+</div>
+
+<div id="noBeginningArea">
+    <h1 class="mainTitle">考试暂未开始</h1>
+    <div style="text-align: center; height: 50px; width: 100%;">
+        <label class="messageText">开考时间：</label>
+        <label id="startTPTime" class="messageText"></label>
+    </div>
+</div>
+
+<div id="finishArea">
+    <div style="text-align: center; height: 50px; width: 100%;">
+        <label class="messageText" style="color: #de0919; font-size: 50px">本场考试已经结束</label>
+    </div>
+</div>
+
+<div id="complete">
+    <div style="text-align: center; height: 50px; width: 100%;">
+        <label class="messageText" style="color: green; font-size: 50px">你已完成试卷</label>
+    </div>
+</div>
+
+<div id="otherLocation">
+    <div style="text-align: center; height: 50px; width: 100%;">
+        <label class="messageText" id="otherLocation_label" style="color: #de0919; font-size: 50px"></label>
+    </div>
+</div>
+
+</body>
+</html>

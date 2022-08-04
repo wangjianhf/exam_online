@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#submitBtn").click(function () {
+                let name = $("#inputName").val();
+                let account = $("#inputAccount").val();
+                let password = $("#inputPassword").val();
+                let briefIntroduction = $("#inputBriefIntroduction").val();
+
+                if (name === "" || name.length < 2 || name.length > 4) {
+                    alert("学生姓名格式错误,请重新输入!");
+                    return;
+                }
+
+                if (account === "" || account.length < 4) {
+                    alert("学生账号格式错误,请重新输入!");
+                    return;
+                }
+
+                if (password === "" || password.length < 4) {
+                    alert("学生密码格式错误,请重新出入!");
+                    return;
+                }
+
+                function studentClass() {
+                    this.stuId = 0;
+                    this.stuName = "";
+                    this.stuAccount = "";
+                    this.stuPassword = "";
+                    this.stuBriefIntroduction = "";
+                }
+
+                let student = new studentClass();
+                student.stuName = name;
+                student.stuAccount = account;
+                student.stuPassword = password;
+                student.stuBriefIntroduction = briefIntroduction;
+
+                let studentJSON = JSON.stringify(student);
+                $.ajax({
+                    url: "/admin_addMessage_Servlet",
+                    type: "post",
+                    data: {"addStudentMessage": studentJSON},
+                    success: function (resultStr) {
+                        if (resultStr === "OK") {
+                            alert('学生:"' + student.stuName + '"的信息添加成功!');
+                        } else {
+                            alert('学生:"' + student.stuName + '"的信息添加失败,账号已存在!');
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">添加学生信息页面</h1>
+<div class="mainBox">
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="inputName" class="col-md-1 control-label">学生姓名:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputName" placeholder="请输入学生姓名" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputAccount" class="col-md-1 control-label">学生账号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputAccount" placeholder="请输入学生账号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputPassword" class="col-md-1 control-label">学生密码:</label>
+        <div class="col-md-11">
+            <input type="password" class="form-control" id="inputPassword" placeholder="请输入学生密码" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputBriefIntroduction" class="col-md-1 control-label">学生备注:</label>
+        <div class="col-md-11">
+            <textarea class="form-control textareaStyle" rows="3" id="inputBriefIntroduction"
+                      placeholder="请输入备注"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group buttonBox">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="submitBtn">添加</button>
+        </center>
+    </div>
+</div>
+</body>
+</html>

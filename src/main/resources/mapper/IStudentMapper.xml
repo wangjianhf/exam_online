@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建映射配置文件-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--源文件所在的路径-->
+<mapper namespace="com.exam.online.mapper.IStudentMapper">
+    <select id="findAccount" parameterType="com.exam.online.bean.LogInModel" resultType="com.exam.online.bean.Student">
+        select *
+        from student_table
+        where stuAccount = #{username}
+          AND stuPassword = #{password};
+    </select>
+
+    <select id="findUser" parameterType="Integer" resultType="com.exam.online.bean.Student">
+        select *
+        from student_table
+        where stuId = #{stuId};
+    </select>
+
+</mapper>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>考生页面</title>
+    <meta name="viewport"
+          content="width=adminSubpage-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="icon" href="../images/hkzd.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link href="../plugins/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../plugins/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/iconfont/iconfont.css" rel="stylesheet" type="text/css">
+
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/adminHome.js"></script>
+    <script src="../js/general.js"></script>
+    <style>
+        a {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        .unable {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        #exitBtn {
+            position: fixed;
+            right: 10px;
+            top: 13.5px;
+            z-index: 999;
+            background-color: #4CAF50;`
+        border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 5px;
+            width: 160px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #exitBtn:after {
+            content: "";
+            background: #90EE90;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        #exitBtn:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+    </style>
+
+    <script>
+        function aClick() {
+            $("#startBox").hide();
+        }
+
+        $(function () {
+            $("#exitBtn").click(function () {
+                $.ajax({
+                    url: "/exitLogin",
+                    type: "post",
+                    data: {"type": "student"},
+                    success: function (resultStr) {
+                        if (resultStr === "OK") {
+                            window.location.href = "/index.html";
+                        }
+                    }, error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        })
+    </script>
+
+</head>
+<body>
+
+<button id="exitBtn">退出登录</button>
+
+<div class="page" id="app">
+    <div class="nav-left" v-show="navLeftFlag" ref="navLeft">
+        <div class="LogoName unable">在线考试系统</div>
+        <div class="navDiv">
+            <a href="studentSubpage/explain.html" class="li-a-a" target="iframe">
+                <div class="navName" style="color: rgb(117,105,248)">系统后台[学生端]:系统说明</div>
+            </a>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a"><i class="iconfont icon-xiugai"></i> 考试信息<i
+                                class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box" id="startBox">
+                            <a href="studentSubpage/startTestPaper.html" class="li-a-a" target="iframe"
+                               id="start" onclick="aClick()">开始考试</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a"><i class="iconfont icon-xiugai"></i> 试卷查阅<i
+                                class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box" id="lookBox">
+                            <a href="studentSubpage/stuQueryTestPaper.html" class="li-a-a" target="iframe"
+                               id="look" onclick="aClick()">历史信息</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="nav-right" ref="navRight">
+        <div class="nav-top">
+            <button type="button" class="btn btn-primary btn-sm hiddenBtn" style="line-height: 10px;"
+                    @click="isShowLeft">
+                <i class="bx bx-grid-alt" style="font-size: 16px;"></i>
+            </button>
+        </div>
+        <div class="content-page" ref="cPage">
+            <iframe name="iframe" width="100%" height="100%" frameborder="0" src="studentSubpage/explain.html"></iframe>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--下拉列表js代码-->
+<script type="text/javascript">
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            navLeftFlag: true
+        },
+        methods: {
+            isShowLeft() {
+                if (this.navLeftFlag) {
+                    this.$refs.navRight.style.paddingLeft = '0px'
+                    this.$refs.cPage.style.left = '0px';
+                    this.navLeftFlag = false;
+                } else {
+                    this.$refs.navRight.style.paddingLeft = '240px';
+                    this.$refs.cPage.style.left = '240px';
+                    this.navLeftFlag = true;
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

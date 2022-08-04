@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "/queryTestPaperServlet",
+                type: "post",
+                data: {"query_all_judge_question": "query"},
+                success: function (resultStr) {
+
+                    var judgeQuestion = JSON.parse(resultStr);
+
+                    $("#showSumBox").text("数量:" + judgeQuestion.length + " 条");
+                    if (judgeQuestion.length === 0) {
+                        return;
+                    }
+
+                    var pagingNum = Math.ceil(judgeQuestion.length / 8);
+
+                    var $pagination = $(".pagination");
+                    var paging_1 = $('<li class="active"><a href="#">1<span class="sr-only"></span></a></li>');
+                    $pagination.append(paging_1);
+
+                    for (let i = 2; i <= pagingNum; i++) {
+                        var tPaging = $('<li><a href="#">' + i + '<span className="sr-only"></span></a></li>');
+                        $pagination.append(tPaging);
+                    }
+
+                    for (let i = 0; i < judgeQuestion.length && i < 8; i++) {
+                        var tr = $("<tr class='trStyle'></tr>");
+                        var td_1 = $("<td class='tdStyle'>" + judgeQuestion[i].id + "</td>");
+                        var td_2 = $("<td class='tdStyle'>" + judgeQuestion[i].topic + "</td>");
+                        var td_3 = $("<td class='tdStyle'>" + judgeQuestion[i].answer + "</td>");
+                        var td_5 = $("<td><label class='delLink'>删除</label></td>");
+                        tr.append(td_1);
+                        tr.append(td_2);
+                        tr.append(td_3);
+                        tr.append(td_5);
+                        $("#mainTable").append(tr);
+                    }
+
+                    $(".delLink").click(function () {
+                        var parent = $(this).parent().parent();
+                        $.ajax({
+                            url: "/queryTestPaperServlet",
+                            type: "post",
+                            data: {"del_judge_question": parent.children().get(0).innerText},
+                            success: function (resultStr) {
+                                if (resultStr === "succeed") {
+                                    var $t = parent.parent();
+                                    var grandfather = $t[0];
+                                    grandfather.removeChild(parent[0]);
+
+                                    $.ajax({
+                                        url: "/queryTestPaperServlet",
+                                        type: "post",
+                                        data: {"query_all_judge_question": "query"},
+                                        success: function (resultStr) {
+                                            judgeQuestion = JSON.parse(resultStr);
+                                        }
+                                    });
+                                }
+                            },
+                            error() {
+                                alert("连接服务器失败");
+                            }
+                        });
+                    });
+
+                    //当数据大于8条时分页
+                    if (judgeQuestion.length > 8) {
+                        $(".pagination li").click(function () {
+                            var crtIndex = $(this).index() + 1;
+
+                            //删除除了第一行之外的所有行
+                            $("#mainTable tr").not(":eq(0)").remove();
+                            var len = crtIndex * 8 < judgeQuestion.length ? crtIndex * 8 : judgeQuestion.length;
+                            for (let index = crtIndex * 8 - 8; index < len; index++) {
+                                var tr = $("<tr class='trStyle'></tr>");
+                                var td_1 = $("<td class='tdStyle'>" + judgeQuestion[index].id + "</td>");
+                                var td_2 = $("<td class='tdStyle'>" + judgeQuestion[index].topic + "</td>");
+                                var td_3 = $("<td class='tdStyle'>" + judgeQuestion[index].answer + "</td>");
+                                var td_5 = $("<td><label class='delLink'>删除</label></td>");
+                                tr.append(td_1);
+                                tr.append(td_2);
+                                tr.append(td_3);
+                                tr.append(td_5);
+                                $("#mainTable").append(tr);
+                            }
+                            $(".pagination li").each(function () {
+                                $(this).removeClass();
+                            });
+                            ``
+                            $(this).addClass("active");
+
+                            $(".delLink").click(function () {
+                                var parent = $(this).parent().parent();
+                                $.ajax({
+                                    url: "/queryTestPaperServlet",
+                                    type: "post",
+                                    data: {"del_judge_question": parent.children().get(0).innerText},
+                                    success: function (resultStr) {
+                                        if (resultStr === "succeed") {
+                                            var $t = parent.parent();
+                                            var grandfather = $t[0];
+                                            grandfather.removeChild(parent[0]);
+                                            $.ajax({
+                                                url: "/queryTestPaperServlet",
+                                                type: "post",
+                                                data: {"query_all_judge_question": "query"},
+                                                success: function (resultStr) {
+                                                    judgeQuestion = JSON.parse(resultStr);
+                                                }
+                                            });
+                                        }
+                                    },
+                                    error() {
+                                        alert("连接服务器失败");
+                                    }
+                                });
+                            });
+                        });
+                    }
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body style="padding: 0 5%">
+<h1 class="mainTitle">查询判断题选题信息页面</h1>
+<label id="showSumBox"></label>
+<table class="table table-hover tableStyle" id="mainTable">
+    <tr class="tableTitle">
+        <td>题目编号</td>
+        <td>题目信息</td>
+        <td>题目答案</td>
+        <td>是否删除</td>
+    </tr>
+
+</table>
+<center style="position: fixed; top: 570px; left: 0; right: 0;">
+    <nav aria-label="...">
+        <ul class="pagination" style='text-align: left'>
+
+        </ul>
+    </nav>
+</center>
+</body>
+</html>

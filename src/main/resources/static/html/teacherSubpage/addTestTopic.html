@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        label {
+            text-align: right;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+
+            for (let i = 1; i <= 10; i++) {
+                $("#SCTopicGrade").append($("<option>" + i + "</option>"));
+                $("#MCQTopicGrade").append($("<option>" + i + "</option>"));
+                $("#JQTopicGrade").append($("<option>" + i + "</option>"));
+            }
+
+            for (let i = 1; i <= 30; i++) {
+                $("#GFTopicGrade").append($("<option>" + i + "</option>"));
+                $("#EQTopicGrade").append($("<option>" + i + "</option>"));
+            }
+
+            for (let i = 0; i < 24; i++) {
+                $("#startHour").append($("<option>" + i + "</option>"));
+                $("#endHour").append($("<option>" + i + "</option>"));
+            }
+
+            for (let i = 0; i < 60; i++) {
+                $("#startMinute").append($("<option>" + i + "</option>"));
+                $("#endMinute").append($("<option>" + i + "</option>"));
+            }
+
+            $.ajax({
+                url: "/queryTestPaperServlet",
+                type: "post",
+                data: {"query_all_topic": "query"},
+                success: function (resultStr) {
+
+                    let allTopicNums = resultStr.split("#");
+                    for (let i = 1; i <= parseInt(allTopicNums[0]) / 2; i++) {
+                        $("#SCTopicNum").append($("<option>" + i + "</option>"));
+                    }
+
+                    for (let i = 1; i <= parseInt(allTopicNums[1]) / 2; i++) {
+                        $("#MCQTopicNum").append($("<option>" + i + "</option>"));
+                    }
+
+                    for (let i = 1; i <= parseInt(allTopicNums[2]) / 2; i++) {
+                        $("#JQTopicNum").append($("<option>" + i + "</option>"));
+                    }
+
+                    for (let i = 1; i <= parseInt(allTopicNums[3]) / 2; i++) {
+                        $("#GFTopicNum").append($("<option>" + i + "</option>"));
+                    }
+
+                    for (let i = 1; i <= parseInt(allTopicNums[4]) / 2; i++) {
+                        $("#EQTopicNum").append($("<option>" + i + "</option>"));
+                    }
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+
+            $("#submitBtn").click(function () {
+                var allTopicNum = $("#SCTopicNum").val() + "#" + $("#MCQTopicNum").val() + "#"
+                    + $("#JQTopicNum").val() + "#" + $("#GFTopicNum").val() + "#" + $("#EQTopicNum").val();
+                allTopicNum += "@@@@";
+
+                allTopicNum += $("#startHour").val() + "--" + $("#startMinute").val();
+
+                allTopicNum += "AAA";
+
+                allTopicNum += $("#endHour").val() + "--" + $("#endMinute").val();
+
+                if (parseInt($("#startHour").val()) > parseInt($("#endHour").val())) {
+                    alert("开始时间错误,请重新选择!");
+                    return;
+                }
+
+                let s = parseInt($("#SCTopicNum").val()) * parseInt($("#SCTopicGrade").val()) +
+                    parseInt($("#MCQTopicNum").val()) * parseInt($("#MCQTopicGrade").val()) +
+                    parseInt($("#JQTopicNum").val()) * parseInt($("#JQTopicGrade").val()) +
+                    parseInt($("#GFTopicGrade").val()) + parseInt($("#EQTopicGrade").val());
+
+                if (s !== 100) {
+                    alert("错误,总分不等于100,一共:" + s + " 分");
+                    return;
+                }
+
+                if ($("#subtitle").val().length === 0 || $("#headline").val().length === 0) {
+                    alert("请输入试卷标题");
+                    return;
+                   }
+
+                //上传试卷----------------------------------------
+                $.ajax({
+                    url: "/queryTestPaperServlet",
+                    type: "post",
+                    data: {"add_topic": allTopicNum},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            //查询当前试卷编号
+                            $.ajax({
+                                url: "/queryTestPaperServlet",
+                                type: "post",
+                                data: {"query_curTestPaperId": "query"},
+                                success: function (resultStr) {
+                                    //resultStr为当前试卷的编号
+                                    if (resultStr === "not_found") {
+                                        alert("分数设置失败!");
+                                        return;
+                                    }
+                                    let node = resultStr + "###" + $("#SCTopicGrade").val() + "###"
+                                        + $("#MCQTopicGrade").val() + "###" + $("#JQTopicGrade").val() + "###"
+                                        + $("#GFTopicGrade").val() + "###" + $("#EQTopicGrade").val();
+
+                                    //添加试卷分数
+                                    $.ajax({
+                                        url: "/queryTestPaperServlet",
+                                        type: "post",
+                                        data: {"set_testPaper_grate": node},
+                                        success: function (resultStr) {
+                                            if (resultStr !== "succeed") {
+                                                alert("分数设置失败!");
+                                            }
+                                        },
+                                        error() {
+                                            alert("连接服务器失败");
+                                        }
+                                    });
+
+                                    let title = resultStr + "###" + $("#headline").val() + "###"
+                                        + $("#subtitle").val();
+
+                                    //添加试卷标题
+                                    $.ajax({
+                                        url: "/queryTestPaperServlet",
+                                        type: "post",
+                                        data: {"add_TP_title": title},
+                                        success: function (resultStr) {
+                                            if (resultStr !== "OK") {
+                                                alert("试卷标题设置失败!");
+                                            }
+                                        },
+                                        error() {
+                                            alert("连接服务器失败");
+                                        }
+                                    });
+
+                                    alert("试卷添加成功!");
+                                },
+                                error() {
+                                    alert("连接服务器失败");
+                                }
+                            });
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">添加试卷信息</h1>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label" for="headline">试卷正标题:</label>
+    <div class="col-md-11">
+        <input type="text" class="form-control" placeholder="请输入试卷正标题" id="headline"/>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label" for="subtitle">试卷副标题:</label>
+    <div class="col-md-11">
+        <input type="text" class="form-control" placeholder="请输入试卷副标题" id="subtitle"/>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label">单选题数量:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="SCTopicNum"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 10px; margin-bottom: 40px;">
+    <label class="col-md-1 control-label" style="text-align: right">单选题分数:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="SCTopicGrade"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label">多选题数量:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="MCQTopicNum"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 10px; margin-bottom: 40px;">
+    <label class="col-md-1 control-label" style="text-align: right">多选题分数:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="MCQTopicGrade"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label">判断题数量:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="JQTopicNum"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 10px; margin-bottom: 40px;">
+    <label class="col-md-1 control-label" style="text-align: right">判断题分数:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="JQTopicGrade"></select>
+    </div>
+</div>
+
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label">填空题数量:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="GFTopicNum"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 10px; margin-bottom: 40px;">
+    <label class="col-md-1 control-label" style="text-align: right">填空题分数:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="GFTopicGrade"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px">
+    <label class="col-md-1 control-label">简答题数量:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="EQTopicNum"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 10px; margin-bottom: 40px;">
+    <label class="col-md-1 control-label" style="text-align: right">简答题分数:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="EQTopicGrade"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 20px;">
+    <label class="col-md-1 control-label">开始时间:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-2" id="startHour"></select>
+        <select class="form-control col-md-2" id="startMinute"></select>
+    </div>
+</div>
+
+<div class="form-group inputStyle" style="margin-top: 60px">
+    <label class="col-md-1 control-label">结束时间:</label>
+    <div class="col-md-11">
+        <select class="form-control col-md-1" id="endHour"></select>
+        <select class="form-control col-md-2" id="endMinute"></select>
+    </div>
+</div>
+
+<div class="form-group buttonBox">
+    <center>
+        <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="submitBtn">提交</button>
+    </center>
+</div>
+
+</body>
+</html>

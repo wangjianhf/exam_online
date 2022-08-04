@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 楷体, 微软雅黑, serif;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#testPaperArea").hide();
+            $("#accomplish").hide();
+            $("#okImg").hide();
+
+            $("#submitBtn").click(function () {
+                window.history.go(-1);
+            });
+
+            function Student_test_paper() {
+                this.stuId = 0;
+                this.tpId = 0;
+                this.node = "";
+                this.answer = "";
+                this.grade = 0;
+            }
+
+            function TopicSet() {
+                this.singleChoices = null;
+                this.multipleChoiceQuestions = null;
+                this.judgeQuestions = null;
+                this.gapFillings = null;
+                this.essayQuestions = null;
+            }
+
+            function TestPaperGrate() {
+                this.tpId = 0;
+                this.scGrate = 0;
+                this.msqGrate = 0;
+                this.jqGrate = 0;
+                this.gfGrate = 0;
+                this.eqGrate = 0;
+            }
+
+            function getQuery(key, url) {
+                url = url || window.location.href;
+                if (url.indexOf('#') !== -1)
+                    url = url.substring(0, url.indexOf('#'));
+                var rts = [], rt;
+                var queryReg = new RegExp('(^|\\?|&)' + key + '=([^&]*)(?=&|$|#)', 'g');
+                while ((rt = queryReg.exec(url)) != null) {
+                    rts.push(decodeURIComponent(rt[2]));
+                }
+                if (rts.length == 0) return null;
+                if (rts.length == 1) return rts[0];
+                return rts;
+            }
+
+
+            //通过url传过来的参数 试卷编号,学生编号
+            let parameter = getQuery("node", window.location.href).split("--");
+            if (parameter[1] === "fail") {
+                $("#testPaperArea").hide();
+                $("#accomplish").fadeIn(300, "linear");
+                return;
+            }
+
+            $.ajax({
+                url: "/stuQueryTestPaperServlet",
+                type: "post",
+                data: {"query_studentTestPaper": parameter[0] + "###" + parameter[1]},
+                success: function (resultStr) {
+                    if (resultStr === "not_found") {
+                        alert("查找失败!");
+                        window.history.go(-1);
+                        return;
+                    }
+
+
+                    $("#testPaperArea").fadeIn(300, "linear");
+
+                    //获取试卷内容
+                    let testPaperNode = JSON.parse(resultStr);
+                    let topicNodeSet = JSON.parse(testPaperNode.node);
+                    let topicAnswerSet = JSON.parse(testPaperNode.answer);
+
+                    //查询当前试卷标题
+                    $.ajax({
+                        url: "/stuQueryTestPaperServlet",
+                        type: "post",
+                        data: {"query_TP_title": "" + testPaperNode.tpId},
+                        success: function (resultStr) {
+                            if (resultStr === "fail") {
+                                alert("获取试卷标题失败!");
+                                return;
+                            }
+                            let titleNode = resultStr.split("###");
+                            $("#headlineLabel").text(titleNode[0]);
+                            $("#subtitleLabel").text(titleNode[1]);
+                        }, error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+
+                    //单选题--------------------------------------------------------------
+                    for (let i = 0; i < topicAnswerSet.singleChoices.length; i++) {
+                        let divBox = $("<div>" + "</div>");
+                        let topic = $("<label  class='topicLabelStyle singleChoicesSet'>" + "（" + (i + 1) + "）" + topicAnswerSet.singleChoices[i].topic + "</label>");
+                        divBox.append(topic);
+
+                        //let optionBox = $("<div style='height: 32px; line-height: 32px' class='optionsBox scAnswerBox " + "scAnswerBox_" + i + "'>" + "</div>");
+                        let optionBox = $("<div class='optionsBox scAnswerBox " + "scAnswerBox_" + i + "'>" + "</div>");
+                        let options = topicAnswerSet.singleChoices[i].option.split("###");
+                        let className = "sc_" + i;
+                        for (let j = 0; j < 4; j++) {
+                            if (topicAnswerSet.singleChoices[i].answer.charAt(j) === "t") {
+                                let top = $("<label style='padding-bottom: 3px; color: rgb(118, 97, 234)' class='optionsLable' for='" + (i * 100 + j) + "'>" + "<input id='" + (i * 100 + j) + "' type='radio' value='f' class='inputRadioBox " + className + "' name='select_" + i + "' checked='checked' disabled>" + options[j] + "</label>");
+                                optionBox.append(top);
+                            } else {
+                                let top = $("<label style='padding-bottom: 3px;' class='optionsLable' for='" + (i * 100 + j) + "'>" + "<input id='" + (i * 100 + j) + "' type='radio' value='f' class='inputRadioBox " + className + "' name='select_" + i + "' disabled>" + options[j] + "</label>");
+                                optionBox.append(top);
+                            }
+                        }
+                        divBox.append(optionBox);
+                        $("#SingleChoiceTopicSet").append(divBox);
+                    }
+
+                    //多选题--------------------------------------------------------------
+                    for (let i = 0; i < topicAnswerSet.multipleChoiceQuestions.length; i++) {
+                        let divBox = $("<div>" + "</div>");
+                        let topic = $("<label class='topicLabelStyle multipleChoiceQuestionsSet'>" + "（" + (i + 1) + "）" + topicAnswerSet.multipleChoiceQuestions[i].topic + "</label>");
+                        divBox.append(topic);
+                        let classNome = "mcq_" + i;
+
+                        let optionBox = $("<div class='optionsBox mcqAnswer " + "mcqAnswerBox_" + i + "'>" + "</div>");
+                        let options = topicAnswerSet.multipleChoiceQuestions[i].option.split("###");
+                        for (let j = 0; j < 4; j++) {
+                            if (topicAnswerSet.multipleChoiceQuestions[i].answer.charAt(j) === "t") {
+                                let top = $("<label style='color: rgb(118, 97, 234)' for='" + (i + j * 20) + "' class='optionsLable'>" + "<input id='" + (i + j * 20) + "' value='f' type='checkbox' class='inputBox " + classNome + "' checked='checked' disabled>" + options[j] + "</label>");
+                                optionBox.append(top);
+                            } else {
+                                let top = $("<label for='" + (i + j * 20) + "' class='optionsLable'>" + "<input id='" + (i + j * 20) + "' value='f' type='checkbox' class='inputBox " + classNome + "' disabled>" + options[j] + "</label>");
+                                optionBox.append(top);
+                            }
+                        }
+                        divBox.append(optionBox);
+                        $("#MultipleChoiceQuestionTopicSet").append(divBox);
+                    }
+
+                    //判断题--------------------------------------------------------------
+                    for (let i = 0; i < topicAnswerSet.judgeQuestions.length; i++) {
+                        let $div = $("<div></div>");
+                        let className = "jq_" + i;
+                        if (topicAnswerSet.judgeQuestions[i].answer === "t") {
+                            let topic = $("<label style='color: rgb(118, 97, 234)' class='topicLabelStyle jqAnswer judgeQuestionsSet'>" + "（" + (i + 1) + "）" + topicAnswerSet.judgeQuestions[i].topic
+                                + " " + "<input type='checkbox' value='f' checked='checked' class='inputBox " + className + "' style='height: 24px;width: 24px;' disabled>" + " </label>");
+                            $($div).append(topic);
+                        } else {
+                            let topic = $("<label class='topicLabelStyle jqAnswer judgeQuestionsSet'>" + "（" + (i + 1) + "）" + topicAnswerSet.judgeQuestions[i].topic
+                                + " " + "<input type='checkbox' value='f' class='inputBox " + className + "' style='height: 24px;width: 24px;' disabled>" + " </label>");
+                            $($div).append(topic);
+                        }
+                        $("#JudgeQuestionTopicSet").append($div);
+                    }
+
+                    //填空题--------------------------------------------------------------
+                    for (let index = 0; index < topicAnswerSet.gapFillings.length; index++) {
+                        let answerSet = topicAnswerSet.gapFillings[index].answer.split("###");
+                        let curNum = 0;
+                        let $div = $("<div class='gfAnswer'></div>");
+                        let className = "gf_" + index;
+                        let node = topicAnswerSet.gapFillings[index].topic.replaceAll("___", "<input style='color: green' placeholder=' " + answerSet[curNum++] + " ' type='text' class='answerInput " + className + "' />");
+                        let topic = $("<label class='topicLabelStyle gapFillingsSet'>" + "（" + (index + 1) + "）" + node + " </label>");
+                        $($div).append(topic);
+                        $("#GapFillingTopicSet").append($div);
+                    }
+
+                    //简答题--------------------------------------------------------------
+                    for (let index = 0; index < topicAnswerSet.essayQuestions.length; index++) {
+                        let $div = $("<div class='eqAnswer'></div>");
+                        let topic = $("<label class='topicLabelStyle essayQuestionsSet'>" + "（" + (index + 1) + "）" + topicAnswerSet.essayQuestions[index].topic + " </label> ");
+                        $($div).append();
+                        let className = "eq_" + index;
+                        let text = $('<textarea readonly="readonly" style="resize: none; margin-bottom: 50px;font-size: 24px; color: green" class="form-control col-md-8 ' + className + '" rows="3" id="inputBriefIntroduction" placeholder="请输入答案">' + topicAnswerSet.essayQuestions[index].answer + '</textarea>')
+                        $($div).append(topic);
+                        $($div).append(text);
+                        $("#EssayQuestionTopicSet").append($div);
+                    }
+
+                    //singleChoicesSet  multipleChoiceQuestionsSet judgeQuestionsSet  gapFillingsSet  essayQuestionsSet
+                    let singleChoicesSet = $(".singleChoicesSet");
+                    let multipleChoiceQuestionsSet = $(".multipleChoiceQuestionsSet");
+                    let judgeQuestionsSet = $(".judgeQuestionsSet");
+
+
+                    //单选题（根据是否正确，来改变题目的颜色）
+                    for (let index = 0; index < topicAnswerSet.singleChoices.length; index++) {
+                        if (topicAnswerSet.singleChoices[index].answer === topicNodeSet.singleChoices[index].answer) {
+                            singleChoicesSet.eq(index).css("color", "green");
+                        } else {
+                            singleChoicesSet.eq(index).css("color", "red");
+                        }
+
+                        let options = $(".scAnswerBox_" + index).find("label");
+                        let topicAnswer = topicNodeSet.singleChoices[index].answer.split("");
+
+                        for (let i = 0; i < 4; i++) {
+                            if (topicAnswer[i] === "t") {
+                                options.eq(i).css("border", "2px solid #0bef0b");
+                            }
+                        }
+                    }
+
+                    //多选题（根据是否正确，来改变题目的颜色）
+                    for (let index = 0; index < topicAnswerSet.multipleChoiceQuestions.length; index++) {
+                        if (topicAnswerSet.multipleChoiceQuestions[index].answer === topicNodeSet.multipleChoiceQuestions[index].answer) {
+                            multipleChoiceQuestionsSet.eq(index).css("color", "green");
+                        } else {
+                            multipleChoiceQuestionsSet.eq(index).css("color", "red");
+                        }
+
+                        let options = $(".mcqAnswerBox_" + index).find("label");
+                        let topicAnswer = topicNodeSet.multipleChoiceQuestions[index].answer.split("");
+
+                        for (let i = 0; i < 4; i++) {
+                            if (topicAnswer[i] === "t") {
+                                options.eq(i).css("border", "2px solid #0bef0b");
+                            }
+                        }
+                    }
+
+                    //判断题（根据是否正确，来改变题目的颜色）
+                    for (let index = 0; index < topicAnswerSet.judgeQuestions.length; index++) {
+                        if (topicNodeSet.judgeQuestions[index].answer === "t") {
+                            judgeQuestionsSet.eq(index).css("border", "2px solid #0bef0b");
+                        }
+                    }
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body style="padding: 30px">
+<div id="mainBox">
+    <div id="titleBox">
+        <h1 class="mainTitle" id="headlineLabel"></h1>
+        <h3 class="mainTitle" id="subtitleLabel" style="margin-bottom: 40px"></h3>
+    </div>
+
+    <div id="testPaperArea" style="display: none">
+
+        <h2 class='topicStyle'>一、单选体</h2><label id="sg_Grade" class="gradeLabel"></label>
+        <div id="SingleChoiceTopicSet" class="topicBox">
+
+        </div>
+
+        <h2 class='topicStyle'>二、多选题</h2><label id="mcq_Grade" class="gradeLabel"></label>
+        <div id="MultipleChoiceQuestionTopicSet" class="topicBox">
+
+        </div>
+
+        <h2 class='topicStyle'>三、判断题</h2><label id="jq_Grade" class="gradeLabel"></label>
+        <div id="JudgeQuestionTopicSet" class="topicBox">
+
+        </div>
+        <div class="row">
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+            <span class="col-md-8">
+                <h2 class='topicStyle' style="display: inline-block">四、填空题</h2>
+            </span>
+                <span class="col-md-4" style="margin-top: 24px; margin-left: -85px;">
+            </span>
+            </div>
+        </div>
+
+
+        <div id="GapFillingTopicSet" class="topicBox">
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+            <span class="col-md-6">
+                <h2 class='topicStyle' style="display: inline-block">五、简答题</h2>
+            </span>
+                <span class="col-md-4" style="margin-top: 24px; margin-left: -85px;">
+            </span>
+            </div>
+        </div>
+
+        <div id="EssayQuestionTopicSet" class="topicBox">
+
+        </div>
+
+        <div class="form-group buttonBox">
+            <center>
+                <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px; margin-bottom: 40px;"
+                        id="submitBtn">返回上级
+                </button>
+            </center>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

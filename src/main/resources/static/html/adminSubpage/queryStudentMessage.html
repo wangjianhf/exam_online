@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查询学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .pageButton {
+            width: 40px;
+            height: 32px;
+            line-height: 32px;
+            background-color: #337ab7;
+            color: #f5f3fd;
+            border: 1px;
+        }
+
+        .pageInput {
+            width: 60px;
+            height: 31px;
+            line-height: 20px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            function studentClass() {
+                this.stuId = 0;
+                this.stuName = "";
+                this.stuAccount = "";
+                this.stuPassword = "";
+                this.stuBriefIntroduction = "";
+            }
+
+            $.ajax({
+                url: "/admin_queryMessage_Servlet",
+                type: "post",
+                data: {"queryAllStudentMessage": "query"},
+                success: function (resultStr) {
+                    /*存储接收到的所有学生信息*/
+                    let students = JSON.parse(resultStr);
+                    $("#showSumBox").text("数量:" + students.length + " 条");
+                    if (students.length === 0) {
+                        return;
+                    }
+
+                    let pagingNum = Math.ceil(students.length / 8);
+
+                    for (let i = 0; i < students.length && i < 8; i++) {
+                        let tr = $("<tr class='trStyle'></tr>");
+                        let td_1 = $("<td>" + students[i].stuId + "</td>");
+                        let td_2 = $("<td>" + students[i].stuName + "</td>");
+                        let td_3 = $("<td>" + students[i].stuAccount + "</td>");
+                        let td_4 = $("<td>" + students[i].stuPassword + "</td>");
+                        //let td_5 = $("<td>" + students[i].stuBriefIntroduction + "</td>");
+                        let td_5 = $("<td>无</td>");
+                        tr.append(td_1);
+                        tr.append(td_2);
+                        tr.append(td_3);
+                        tr.append(td_4);
+                        tr.append(td_5);
+                        $("#mainTable").append(tr);
+                    }
+
+                    let pagination = $(".pagination");
+
+                    //添加上一页按钮
+                    pagination.append($('<li id="lastPageBtn" class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>'));
+                    pagination.append($('<li class="active pageLi"><a href="#">1 <span className="sr-only"></span></a></li>'));
+                    for (let i = 2; i <= 5 && i <= pagingNum; i++) {
+                        pagination.append('<li class="pageLi"><a href="#">' + i + '<span className="sr-only"></span></a></li>');
+                    }
+
+                    let curPageIndex = 1;
+
+                    //移动到指定下标
+                    function moveAssignIndex(thisPointer, status = 666) {
+                        let crtIndex = 0;
+                        if (status === 666) {
+                            crtIndex = parseInt($(thisPointer).text());
+                        } else {
+                            crtIndex = status;
+                        }
+                        curPageIndex = crtIndex;
+                        //删除除了第一行之外的所有行
+                        $("#mainTable tr").not(":eq(0)").remove();
+                        let len = crtIndex * 8 < students.length ? crtIndex * 8 : students.length;
+                        for (let index = crtIndex * 8 - 8; index < len; index++) {
+                            let tr = $("<tr class='trStyle'></tr>");
+                            let td_1 = $("<td>" + students[index].stuId + "</td>");
+                            let td_2 = $("<td>" + students[index].stuName + "</td>");
+                            let td_3 = $("<td>" + students[index].stuAccount + "</td>");
+                            let td_4 = $("<td>" + students[index].stuPassword + "</td>");
+                            //let td_5 = $("<td>" + students[index].stuBriefIntroduction + "</td>");
+                            let td_5 = $("<td>无</td>");
+                            tr.append(td_1);
+                            tr.append(td_2);
+                            tr.append(td_3);
+                            tr.append(td_4);
+                            tr.append(td_5);
+                            $("#mainTable").append(tr);
+                        }
+                    }
+
+                    //默认为第一页
+                    moveAssignIndex(null, 1);
+
+                    function judgeIfDisabled(thisPointer) {
+                        //如果第一条被选中,则不能用上一页
+                        if (parseInt($(thisPointer).text()) === 1) {
+                            $("#lastPageBtn").addClass("disabled");
+                        } else {
+                            $("#lastPageBtn").removeClass("disabled");
+                        }
+
+                        //如果最后条被选中,则不能用下一页
+                        if (parseInt($(thisPointer).text()) === pagingNum) {
+                            $("#nextPageBtn").addClass("disabled");
+                        } else {
+                            $("#nextPageBtn").removeClass("disabled");
+                        }
+                    }
+
+                    //分页符被按下后
+                    $(".pageLi").each(function () {
+                        $(this).click(function () {
+                            $(this).parent().children().each(function () {
+                                $(this).removeClass("active");
+                            })
+                            $(this).addClass("active");
+                            curPageIndex = parseInt($(this).text());
+                            judgeIfDisabled(this);
+                            moveAssignIndex(this);
+                        });
+                    });
+
+                    //添加下一页按钮
+                    pagination.append($('<li id="nextPageBtn"><a href="#" aria-label="Previous"><span aria-hidden="true">»</span></a></li>'));
+
+                    //上一页按钮的点击事件
+                    $("#lastPageBtn").click(function () {
+                        //判断导航页中是否存在上一个页面
+                        $(".pageLi").each(function () {
+                            if (parseInt($(this).text()) === curPageIndex - 1) {
+                                $(this).parent().children().each(function () {
+                                    $(this).removeClass("active");
+                                });
+                                $(this).addClass("active");
+                                curPageIndex--;
+                                moveAssignIndex(this);
+                                judgeIfDisabled(this);
+                                return false;
+                            }
+
+                            //说明没有在当前分页符导航栏上
+                            if (parseInt(pagination.find(".pageLi").eq(0).text()) !== 1) {
+                                let curInd = parseInt(pagination.find(".pageLi").eq(0).text()) - 1;
+                                pagination.find(".pageLi").each(function () {
+                                    $(this).html('<a href="#">' + (curInd++) + '<span className="sr-only"></span></a>');
+                                });
+                                curPageIndex--;
+                                moveAssignIndex(null, curPageIndex);
+                                judgeIfDisabled(this);
+                                return false;
+                            }
+                        })
+                    });
+
+                    //上一页按钮的点击事件
+                    $("#nextPageBtn").click(function () {
+                        //判断导航页中是否存在上一个页面
+                        $(".pageLi").each(function () {
+                            if (parseInt($(this).text()) === curPageIndex + 1) {
+                                $(this).parent().children().each(function () {
+                                    $(this).removeClass("active");
+                                });
+                                $(this).addClass("active");
+                                curPageIndex++;
+                                moveAssignIndex(this);
+                                judgeIfDisabled(this);
+                                return false;
+                            }
+
+                            //说明没有在当前分页符导航栏上
+                            if (parseInt(pagination.find(".pageLi").eq(4).text()) !== pagingNum) {
+                                let curInd = parseInt(pagination.find(".pageLi").eq(0).text()) + 1;
+                                pagination.find(".pageLi").each(function () {
+                                    $(this).html('<a href="#">' + (curInd++) + '<span className="sr-only"></span></a>');
+                                });
+                                curPageIndex++;
+                                moveAssignIndex(null, curPageIndex);
+                                judgeIfDisabled(this);
+                                return false;
+                            }
+                        })
+                    });
+
+                    function clearFlag(index) {
+                        $(".pageLi").children().each(function () {
+                            $(this).removeClass("active");
+                        });
+                        $(".pageLi").children().each(function () {
+                            if (parseInt($(this).text()) === index) {
+                                $(this).addClass("active");
+                            }
+                            return false;
+                        });
+                    }
+
+
+                    //添加到指定页面按钮
+                    pagination.append($('<div style="display: inline-block; margin-left: 30px;"><input id="pageIndexInput" class="pageInput" type="number"><button id="gotoPageIndexBut" class="pageButton">Go</button></div>'));
+
+                    //到指定页面的按钮
+                    let pageInput = $("#pageIndexInput");
+                    pageInput.attr("min", 1);
+                    pageInput.attr("max", pagingNum);
+
+                    function gotoPageIndexButClick() {
+                        let curNum = (Math.ceil($("#pageIndexInput").val()) % pagingNum);
+                        curNum = curNum === 0 ? 13 : curNum;    //防止为第0页
+
+                        $("#pageIndexInput").val(curNum);
+                        let status = false;
+                        //判断导航页中是否存在当前页面
+                        $(".pageLi").each(function () {
+                            if (parseInt($(this).text()) === curNum) {
+                                $(this).parent().children().each(function () {
+                                    $(this).removeClass("active");
+                                });
+                                $(this).addClass("active");
+                                curPageIndex = curNum;
+                                moveAssignIndex(null, curPageIndex);
+                                judgeIfDisabled(this);
+                                status = true;
+                                return false;
+                            }
+                        });
+
+                        //如果在当前分页栏中执行过了就退出
+                        if (status) {
+                            return;
+                        }
+
+                        let curN = curNum;
+
+                        if (curNum > pagingNum - 4) {
+                            let front = 4 - (Math.abs(curNum - pagingNum));  //前面的数量
+                            let liIndex = 0;
+                            for (let i = front; i > 0; i--) {
+                                $(".pageLi").eq(liIndex++).html('<a href="#">' + (curNum - i) + '<span className="sr-only"></span></a>');
+                            }
+
+                            for (let i = curNum; i <= pagingNum; i++) {
+                                $(".pageLi").eq(liIndex++).html('<a href="#">' + (i) + '<span className="sr-only"></span></a>');
+                            }
+                            curPageIndex = curNum;
+                            clearFlag(curNum);
+                            moveAssignIndex(null, curPageIndex);
+                            judgeIfDisabled(this);
+                        } else {
+                            for (let i = 0; i < 5; i++) {
+                                $(".pageLi").eq(i).html('<a href="#">' + (curN++) + '<span className="sr-only"></span></a>');
+                            }
+                            curPageIndex = curNum;
+                            clearFlag(curNum);
+                            moveAssignIndex(null, curPageIndex);
+                            judgeIfDisabled(this);
+                        }
+                    }
+
+                    $("#gotoPageIndexBut").click(function () {
+                        gotoPageIndexButClick();
+                        gotoPageIndexButClick();
+                    });
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body style="padding: 0 5%">
+<h1 class="mainTitle">查询学生信息页面</h1>
+<label id="showSumBox"></label>
+<table class="table table-hover tableStyle" id="mainTable">
+    <tr class="tableTitle">
+        <td>学生编号</td>
+        <td>学生编号</td>
+        <td>学生账号</td>
+        <td>学生密码</td>
+        <td>学生备注</td>
+    </tr>
+</table>
+<center style="position: fixed; top: 480px; left: 0; right: 0;">
+    <nav aria-label="...">
+        <ul class="pagination">
+
+        </ul>
+    </nav>
+</center>
+</body>
+</html>

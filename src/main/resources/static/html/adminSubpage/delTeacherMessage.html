@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除教师信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var curId = 0;
+            $.ajax({
+                url: "/admin_queryMessage_Servlet",
+                type: "post",
+                data: {"queryTeacherIdSum": "query"},
+                success: function (resultStr) {
+                    var IdSet = JSON.parse(resultStr);
+                    $("#startSelectBox").empty();
+                    $("#endSelectBox").empty();
+                    for (let i = 0; i < IdSet.length; i++) {
+                        $("#startSelectBox").append($("<option>" + IdSet[i] + "</option>"));
+                        $("#endSelectBox").append($("<option>" + IdSet[i] + "</option>"));
+                    }
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+
+            /*根据教师编号删除*/
+            $("#searchStuIdBtn").click(function () {
+                var teaId = $("#searchStuId").val();
+                if (teaId.length === 0) {
+                    alert("输入的教师编号格式错误,请重新输入");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/admin_delMessage_Servlet",
+                    type: "post",
+                    data: {"delTeacherId": "" + teaId},
+                    success: function (resultStr) {
+                        if (resultStr === "cannotFind") {
+                            alert("删除的教师编号:" + teaId + " 不存在!");
+                            return;
+                        }
+                        alert("删除的教师编号:" + teaId + "删除成功!");
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+
+            /*批量教师账号*/
+            $("#delStudentBtn").click(function () {
+                var startTeaId = parseInt($("#startSelectBox").val());
+                var endTeaId = parseInt($("#endSelectBox").val());
+                if (startTeaId >= endTeaId) {
+                    alert("删除失败,格式错误!");
+                } else {
+                    $.ajax({
+                        url: "/admin_delMessage_Servlet",
+                        type: "post",
+                        data: {"delTeacherIdSet": "" + startTeaId + "-" + endTeaId},
+                        success: function (resultStr) {
+
+                            $.ajax({
+                                url: "/admin_queryMessage_Servlet",
+                                type: "post",
+                                data: {"queryTeacherIdSum": "query"},
+                                success: function (resultStr) {
+                                    var IdSet = JSON.parse(resultStr);
+                                    $("#startSelectBox").empty();
+                                    $("#endSelectBox").empty();
+                                    for (let i = 0; i < IdSet.length; i++) {
+                                        $("#startSelectBox").append($("<option>" + IdSet[i] + "</option>"));
+                                        $("#endSelectBox").append($("<option>" + IdSet[i] + "</option>"));
+                                    }
+                                },
+                                error() {
+                                    alert("连接服务器失败");
+                                }
+                            });
+
+                            if (resultStr === "OK") {
+                                alert("编号:" + startTeaId + " 至:" + endTeaId + " 删除成功!");
+                            }
+                        },
+                        error() {
+                            alert("连接服务器失败");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">删除教师信息页面</h1>
+<div id="search">
+
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="searchStuId" class="col-md-1 control-label">教师编号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="searchStuId" placeholder="请输入要删除的教师编号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group buttonBox" style="margin-top: -10px">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="searchStuIdBtn">
+                按编号删除
+            </button>
+        </center>
+    </div>
+
+    <div class="form-group inputStyle" style="margin-top: 110px">
+        <label class="control-label" style="float: left; margin: auto 15px;">按学号批量删除教师:</label>
+        <div class="col-md-2">
+            <select class="form-control" id="startSelectBox">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select class="form-control" id="endSelectBox">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <button type="button" id="delStudentBtn" class="col-md-2 btn btn-danger buttonStyle"
+                style="font-size: 18px; margin-left: 50px; margin-top: -4px; font-family: 楷体, 微软雅黑, serif;">开始批量删除
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

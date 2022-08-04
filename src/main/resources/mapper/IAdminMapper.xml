@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建映射配置文件-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--源文件所在的路径-->
+<mapper namespace="com.exam.online.mapper.IAdminMapper">
+    <select id="findAccount" parameterType="com.exam.online.bean.LogInModel" resultType="com.exam.online.bean.Admin">
+        select admId, admName, admAccount, admPassword, admBriefIntroduction
+        from admin_table
+        where admAccount = #{username}
+          AND admPassword = #{password};
+    </select>
+
+    <select id="findAllStudent" resultType="com.exam.online.bean.Student">
+        select *
+        from student_table;
+    </select>
+
+    <select id="findAllTeacher" resultType="com.exam.online.bean.Teacher">
+        select *
+        from teacher_table;
+    </select>
+
+    <select id="queryStudentSum" resultType="Integer">
+        select count(student_table.stuId)
+        from student_table;
+    </select>
+
+    <select id="queryTeacherSum" resultType="Integer">
+        select count(teacher_table.teaId)
+        from teacher_table;
+    </select>
+
+    <select id="queryStudentIdSum" resultType="Integer">
+        select student_table.stuId
+        from student_table;
+    </select>
+
+    <select id="queryTeacherIdSum" resultType="Integer">
+        select teacher_table.teaId
+        from teacher_table;
+    </select>
+
+    <delete id="removeStudent" parameterType="Integer">
+        delete
+        from student_test_paper
+        where stuId = #{stuId};
+
+        delete
+        from student_table
+        where stuId = #{stuId};
+    </delete>
+
+    <delete id="removeTeacher" parameterType="Integer">
+        delete
+        from teacher_table
+        where teaId = #{teaId};
+    </delete>
+
+    <delete id="removeStudentSet" parameterType="Integer">
+        delete
+        from student_table
+        where stuId &gt;= #{param1}
+          and stuId &lt;= #{param2};
+    </delete>
+
+    <delete id="removeTeacherSet" parameterType="Integer">
+        delete
+        from teacher_table
+        where teaId &gt;= #{param1}
+          and teaId &lt;= #{param2};
+    </delete>
+
+    <insert id="addStudent" parameterType="com.exam.online.bean.Student">
+        insert into student_table(stuId, stuName, stuAccount, stuPassword, stuBriefIntroduction)
+        values (#{stuId}, #{stuName}, #{stuAccount}, #{stuPassword}, #{stuBriefIntroduction});
+    </insert>
+
+    <insert id="addTeacher" parameterType="com.exam.online.bean.Teacher">
+        insert into teacher_table(teaId, teaName, teaAccount, teaPassword, teaBriefIntroduction)
+        values (#{teaId}, #{teaName}, #{teaAccount}, #{teaPassword}, #{teaBriefIntroduction});
+    </insert>
+
+    <update id="updateStudent" parameterType="com.exam.online.bean.Student">
+        update student_table
+        set stuName=#{stuName},
+            stuAccount=#{stuAccount},
+            stuPassword=#{stuPassword},
+            stuBriefIntroduction=#{stuBriefIntroduction}
+        where stuId = #{stuId};
+    </update>
+
+    <update id="updateTeacher" parameterType="com.exam.online.bean.Teacher">
+        update teacher_table
+        set teaName=#{teaName},
+            teaAccount=#{teaAccount},
+            teaPassword=#{teaPassword},
+            teaBriefIntroduction=#{teaBriefIntroduction}
+        where teaId = #{teaId};
+    </update>
+</mapper>

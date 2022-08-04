@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>添加题目信息</title>
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="Andx-Editor-master/1.1.3/andx/editor.js"></script>
+    <link rel="stylesheet" type="text/css" href="Andx-Editor-master/1.1.3/andx/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/universal.css">
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .blueFont {
+            color: rgb(109, 97, 234);
+        }
+
+        .custom-file-input::-webkit-file-upload-button {
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .custom-file-input::before {
+            text-align: center;
+            content: '请选择文件';
+            display: inline-block;
+            background: linear-gradient(top, #f9f9f9, #e3e3e3);
+            border: 1px solid green;
+            border-radius: 3px;
+            padding: 5px 8px;
+            outline: none;
+            white-space: nowrap;
+            -webkit-user-select: none;
+            cursor: pointer;
+            text-shadow: 1px 1px #fff;
+            font-weight: 700;
+            font-size: 10pt;
+        }
+
+        .custom-file-input:hover::before {
+            text-align: center;
+            border-color: green;
+        }
+
+        .custom-file-input:active::before {
+            text-align: center;
+            background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        //添加单选题
+        $(function () {
+            function SingleChoiceClass() {
+                this.id = 0;
+                this.topic = "";
+                this.answer = "";
+                this.option = "";
+            }
+
+            let singleChoiceObj = new SingleChoiceClass();
+
+            //选择改变后答案也改变
+
+            let answer = "tfff";
+            let option = "null###null###null###null";
+            $('input[type="radio"]').click(function () {
+                $('input[type="radio"]').each(function () {
+                    $(this).val("f");
+                });
+                $(this).val("t");
+                const radioArr = $('input[type="radio"]');
+                answer = "";
+                answer += radioArr.eq(0).val() + radioArr.eq(1).val() + radioArr.eq(2).val() + radioArr.eq(3).val();
+            });
+
+            //拼接答案
+            $("#btn").click(function () {
+                singleChoiceObj.answer = answer;
+                singleChoiceObj.topic = singleChoiceInput.getContent();
+                singleChoiceObj.option = $("#singleChoiceAnswer_1").val() + "###" + $("#singleChoiceAnswer_2").val()
+                    + "###" + $("#singleChoiceAnswer_3").val() + "###" + $("#singleChoiceAnswer_4").val();
+                let singleChoiceJson = JSON.stringify(singleChoiceObj);
+
+                $.ajax({
+                    url: "/testPaperServlet",
+                    type: "post",
+                    data: {"add_single_choice": singleChoiceJson},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            alert("题目添加成功!");
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+
+        //添加多选题-----------------------------------------------------------------------------
+        $(function () {
+            function MultipleChoiceQuestionClass() {
+                this.id = 0;
+                this.topic = "";
+                this.answer = "";
+                this.option = "";
+            }
+
+            let multipleChoiceQuestion = new MultipleChoiceQuestionClass();
+
+            //选择改变后答案也改变
+
+            let answer = "tfff";
+            let option = "null###null###null###null";
+
+            $('input[type="checkbox"]').click(function () {
+                if (this.checked === true) {
+                    $(this).val("t");
+                } else {
+                    $(this).val("f");
+                }
+            });
+
+            //拼接答案
+            $("#btn_2").click(function () {
+                const radioArr = $('input[type="checkbox"]');
+                answer = "";
+                answer += radioArr.eq(0).val() + radioArr.eq(1).val() + radioArr.eq(2).val() + radioArr.eq(3).val();
+
+                multipleChoiceQuestion.answer = answer;
+                multipleChoiceQuestion.topic = multipleChoiceQuestionInput.getContent();
+                multipleChoiceQuestion.option = $("#multipleChoiceQuestion_1").val() + "###" + $("#multipleChoiceQuestion_2").val()
+                    + "###" + $("#multipleChoiceQuestion_3").val() + "###" + $("#multipleChoiceQuestion_4").val();
+                let multipleChoiceQuestionJson = JSON.stringify(multipleChoiceQuestion);
+                console.log(multipleChoiceQuestionJson);
+                $.ajax({
+                    url: "/testPaperServlet",
+                    type: "post",
+                    data: {"add_multiple_choice_question": multipleChoiceQuestionJson},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            alert("题目添加成功!");
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+
+        //添加单选题------------------------------------------------------------
+        $(function () {
+            function JudgeQuestionClass() {
+                this.id = 0;
+                this.topic = "";
+                this.answer = "";
+            }
+
+            let judgeQuestionObj = new JudgeQuestionClass();
+
+            //选择改变后答案也改变
+            let answer = "t";
+
+            $('#judgeQuestion_1').click(function () {
+                if (this.checked === true) {
+                    $(this).val("t");
+                } else {
+                    $(this).val("f");
+                }
+            });
+
+            //拼接答案
+            $("#btn_3").click(function () {
+                judgeQuestionObj.answer = $('#judgeQuestion_1').val();
+                judgeQuestionObj.topic = judgeQuestionInput.getContent();
+
+                let judgeQuestionObjJson = JSON.stringify(judgeQuestionObj);
+                console.log(judgeQuestionObjJson);
+                $.ajax({
+                    url: "/testPaperServlet",
+                    type: "post",
+                    data: {"add_judge_question": judgeQuestionObjJson},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            alert("题目添加成功!");
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+
+        //添加填空题----------------------------------------------------------------
+        $(function () {
+            function GapFillingClass() {
+                this.id = 0;
+                this.topic = "";
+                this.answer = "";
+                this.number = 0;
+            }
+
+            let gapFillingObj = new GapFillingClass();
+
+            //拼接答案
+            $("#btn_4").click(function () {
+                gapFillingObj.topic = gapFillingInput.getContent();
+                gapFillingObj.number = 0;
+
+                let gapFillingObjJson = JSON.stringify(gapFillingObj);
+                console.log(gapFillingObjJson);
+                $.ajax({
+                    url: "/testPaperServlet",
+                    type: "post",
+                    data: {"add_gap_filling": gapFillingObjJson},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            alert("题目添加成功!");
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+
+        //添加简答题--------------------------------------------------------------
+        $(function () {
+            function EssayQuestionClass() {
+                this.id = 0;
+                this.topic = "";
+            }
+
+            let essayQuestionObj = new EssayQuestionClass();
+
+            //拼接答案
+            $("#btn_5").click(function () {
+
+                essayQuestionObj.topic = essayQuestionInput.getContent();
+
+                let essayQuestionJson = JSON.stringify(essayQuestionObj);
+                console.log(essayQuestionJson);
+                $.ajax({
+                    url: "/testPaperServlet",
+                    type: "post",
+                    data: {"add_essay_question": essayQuestionJson},
+                    success: function (resultStr) {
+                        if (resultStr === "succeed") {
+                            alert("题目添加成功!");
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+
+        //上传文件的代码
+        $(function () {
+            $("#uploadBut-A1").click(function () {
+                $("#uploadType-A1").val("A1");
+            });
+
+            $("#uploadBut-A2").click(function () {
+                $("#uploadType-A2").val("A2");
+            });
+
+            $("#uploadBut-A3").click(function () {
+                $("#uploadType-A3").val("A3");
+            });
+
+            $("#uploadBut-A4").click(function () {
+                $("#uploadType-A4").val("A4");
+            });
+
+            $("#uploadBut-A5").click(function () {
+                $("#uploadType-A5").val("A5");
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                              data-toggle="tab" class="blueFont">单选题</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
+                               class="blueFont">多选题</a></li>
+
+    <li role="presentation"><a href="#messages" aria-controls="settings" role="tab" data-toggle="tab"
+                               class="blueFont">判断题</a>
+    </li>
+
+    <li role="presentation"><a href="#settings" aria-controls="messages" role="tab" data-toggle="tab"
+                               class="blueFont">填空题</a>
+    </li>
+    <li role="presentation"><a href="#essayQuestion" aria-controls="settings" role="tab" data-toggle="tab"
+                               class="blueFont">简答题</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <h1 class="mainTitle" style="margin-bottom: 30px">添加单选题目信息</h1>
+        <textarea id="content1" class="textarea"></textarea>
+        <script type="text/javascript">
+            let singleChoiceInput = new ANDX.Editor("content1", "singleChoiceInput", {
+                "width": 800,
+                "height": 400,
+                "language": "zh-cn",
+                "tools": ["format", "color", "size", "bold", "italic", "underline", "left", "center", "right", "ul", "ol", "outdent", "indent", "link", "unlink"],
+                "panel": ["source"]
+            });
+            singleChoiceInput.init();
+        </script>
+        <div class="row">
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 130px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="radio" aria-label="..." name="singleChoiceAnswer" value="t" checked="checked">
+                      </span>
+                    <input id="singleChoiceAnswer_1" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 230px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="radio" aria-label="..." name="singleChoiceAnswer" value="f">
+                      </span>
+                    <input id="singleChoiceAnswer_2" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 330px">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                        <input type="radio" aria-label="..." name="singleChoiceAnswer" value="f">
+                        </span>
+                    <input id="singleChoiceAnswer_3" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 430px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="radio" aria-label="..." name="singleChoiceAnswer" value="f">
+                      </span>
+                    <input id="singleChoiceAnswer_4" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success buttonStyle" id="btn"
+                style="width: 23.55%; font-size: 20px; position: absolute; left: 913px; top: 524px">提交
+        </button>
+
+        <br/>
+
+        <div style="padding-left: 5px; width: 850px; height: 40px;  margin-top: -25px; position:relative; z-index: 99999">
+            <a class="btn btn-success buttonStyle " href="/downloadExcel?A1"
+               style="display: inline-block; width: 23.55%; font-size: 20px; float: left; color: white;text-decoration: none">下载模板</a>
+
+            <form action="/uploadExcel" method="post" enctype="multipart/form-data" style="float: right;width: 23.55%;">
+                <button type="submit" class="btn btn-success buttonStyle" id="uploadBut-A1"
+                        style="width: 100%; font-size: 20px;">上传题目
+                </button>
+                <input type="text" name="type" style="display: none" id="uploadType-A1"/>
+                <input type="file" name="photo" class="custom-file-input" style="margin-top: 5px">
+            </form>
+        </div>
+    </div>
+
+    <!--------------------------------------------下面是多选题--------------------------------------------------------------->
+
+    <div role="tabpanel" class="tab-pane" id="profile">
+        <h1 class="mainTitle" style="margin-bottom: 30px">添加多选题目信息</h1>
+        <textarea id="content2" class="textarea"></textarea>
+        <script type="text/javascript">
+            let multipleChoiceQuestionInput = new ANDX.Editor("content2", "multipleChoiceQuestionInput", {
+                "width": 800,
+                "height": 400,
+                "language": "zh-cn",
+                "tools": ["format", "color", "size", "bold", "italic", "underline", "left", "center", "right", "ul", "ol", "outdent", "indent", "link", "unlink"],
+                "panel": ["source"]
+            });
+            multipleChoiceQuestionInput.init();
+        </script>
+        <div class="row">
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 130px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="..." id="multipleChoiceQuestionAnswerRadio_1" value="t"
+                               checked="checked">
+                      </span>
+                    <input id="multipleChoiceQuestion_1" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 230px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="..." id="multipleChoiceQuestionAnswerRadio_2" value="f">
+                      </span>
+                    <input id="multipleChoiceQuestion_2" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 330px">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                        <input type="checkbox" aria-label="..." id="multipleChoiceQuestionAnswerRadio_3" value="f">
+                        </span>
+                    <input id="multipleChoiceQuestion_3" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 430px">
+                <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="checkbox" aria-label="..." id="multipleChoiceQuestionAnswerRadio_4" value="f">
+                      </span>
+                    <input id="multipleChoiceQuestion_4" type="text" class="form-control" aria-label="...">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success buttonStyle" id="btn_2"
+                style="width: 23.55%; font-size: 20px; position: absolute; left: 913px; top: 524px">提交
+        </button>
+
+        <div style="padding-left: 5px; width: 850px; height: 40px;  margin-top: -25px; position:relative; z-index: 99999">
+            <a class="btn btn-success buttonStyle " href="/downloadExcel?A2"
+               style="display: inline-block; width: 23.55%; font-size: 20px; float: left; color: white;text-decoration: none">下载模板</a>
+
+            <form action="/uploadExcel" method="post" enctype="multipart/form-data" style="float: right;width: 23.55%;">
+                <button type="submit" class="btn btn-success buttonStyle" id="uploadBut-A2"
+                        style="width: 100%; font-size: 20px;">上传题目
+                </button>
+                <input type="text" name="type" style="display: none" id="uploadType-A2"/>
+                <input type="file" name="photo" class="custom-file-input" style="margin-top: 5px">
+            </form>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="messages">
+        <h1 class="mainTitle" style="margin-bottom: 30px">添加判断题信息</h1>
+        <textarea id="content3" class="textarea"></textarea>
+        <script type="text/javascript">
+            let judgeQuestionInput = new ANDX.Editor("content3", "judgeQuestionInput", {
+                "width": 800,
+                "height": 400,
+                "language": "zh-cn",
+                "tools": ["format", "color", "size", "bold", "italic", "underline", "left", "center", "right", "ul", "ol", "outdent", "indent", "link", "unlink"],
+                "panel": ["source"]
+            });
+            judgeQuestionInput.init();
+        </script>
+        <div class="row">
+            <div class="col-md-3" style="position: absolute; left: 900px; top: 130px">
+                <label class="mainTitle" style="font-size: 25px">是否正确:</label>
+                <input style="margin-top: 11px; width: 20px; height: 20px;" type="checkbox" aria-label="..."
+                       id="judgeQuestion_1" value="f">
+            </div>
+        </div>
+        <button class="btn btn-success buttonStyle" id="btn_3"
+                style="width: 23.55%; font-size: 20px; position: absolute; left: 913px; top: 524px">提交
+        </button>
+
+        <div style="padding-left: 5px; width: 850px; height: 40px;  margin-top: -25px; position:relative; z-index: 99999">
+            <a class="btn btn-success buttonStyle " href="/downloadExcel?A3"
+               style="display: inline-block; width: 23.55%; font-size: 20px; float: left; color: white;text-decoration: none">下载模板</a>
+
+            <form action="/uploadExcel" method="post" enctype="multipart/form-data" style="float: right;width: 23.55%;">
+                <button type="submit" class="btn btn-success buttonStyle" id="uploadBut-A3"
+                        style="width: 100%; font-size: 20px;">上传题目
+                </button>
+                <input type="text" name="type" style="display: none" id="uploadType-A3"/>
+                <input type="file" name="photo" class="custom-file-input" style="margin-top: 5px">
+            </form>
+        </div>
+    </div>
+
+    <!--填空题-->
+    <div role="tabpanel" class="tab-pane" id="settings">
+        <h1 class="mainTitle" style="margin-bottom: 30px">添加填空题信息</h1>
+        <textarea id="content4" class="textarea"></textarea>
+        <script type="text/javascript">
+            let gapFillingInput = new ANDX.Editor("content4", "gapFillingInput", {
+                "width": 800,
+                "height": 400,
+                "language": "zh-cn",
+                "tools": ["format", "color", "size", "bold", "italic", "underline", "left", "center", "right", "ul", "ol", "outdent", "indent", "link", "unlink"],
+                "panel": ["source"]
+            });
+            gapFillingInput.init();
+        </script>
+
+        <button class="btn btn-success buttonStyle" id="btn_4"
+                style="width: 23.55%; font-size: 20px; position: absolute; left: 913px; top: 524px">提交
+        </button>
+
+        <div style="padding-left: 5px; width: 850px; height: 40px;  margin-top: -25px; position:relative; z-index: 99999">
+            <a class="btn btn-success buttonStyle " href="/downloadExcel?A4"
+               style="display: inline-block; width: 23.55%; font-size: 20px; float: left; color: white;text-decoration: none">下载模板</a>
+
+            <form action="/uploadExcel" method="post" enctype="multipart/form-data" style="float: right;width: 23.55%;">
+                <button type="submit" class="btn btn-success buttonStyle" id="uploadBut-A4"
+                        style="width: 100%; font-size: 20px;">上传题目
+                </button>
+                <input type="text" name="type" style="display: none" id="uploadType-A4"/>
+                <input type="file" name="photo" class="custom-file-input" style="margin-top: 5px">
+            </form>
+        </div>
+    </div>
+
+    <!--简答题-->
+    <div role="tabpanel" class="tab-pane" id="essayQuestion">
+        <h1 class="mainTitle" style="margin-bottom: 30px">添加简答题目信息</h1>
+        <textarea id="content5" class="textarea"></textarea>
+        <script type="text/javascript">
+            let essayQuestionInput = new ANDX.Editor("content5", "essayQuestionInput", {
+                "width": 800,
+                "height": 400,
+                "language": "zh-cn",
+                "tools": ["format", "color", "size", "bold", "italic", "underline", "left", "center", "right", "ul", "ol", "outdent", "indent", "link", "unlink"],
+                "panel": ["source"]
+            });
+            essayQuestionInput.init();
+        </script>
+        <button class="btn btn-success buttonStyle" id="btn_5"
+                style="width: 23.55%; font-size: 20px; position: absolute; left: 913px; top: 524px">提交
+        </button>
+
+        <div style="padding-left: 5px; width: 850px; height: 40px;  margin-top: -25px; position:relative; z-index: 99999">
+            <a class="btn btn-success buttonStyle " href="/downloadExcel?A5"
+               style="display: inline-block; width: 23.55%; font-size: 20px; float: left; color: white;text-decoration: none">下载模板</a>
+
+            <form action="/uploadExcel" method="post" enctype="multipart/form-data" style="float: right;width: 23.55%;">
+                <button type="submit" class="btn btn-success buttonStyle" id="uploadBut-A5"
+                        style="width: 100%; font-size: 20px;">上传题目
+                </button>
+                <input type="text" name="type" style="display: none" id="uploadType-A5"/>
+                <input type="file" name="photo" class="custom-file-input" style="margin-top: 5px">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

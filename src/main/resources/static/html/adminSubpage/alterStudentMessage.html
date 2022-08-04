@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            function studentClass() {
+                this.stuId = 0;
+                this.stuName = "";
+                this.stuAccount = "";
+                this.stuPassword = "";
+                this.stuBriefIntroduction = "";
+            }
+
+            //全局变量用于存储收到的信息
+            var student = new studentClass();
+
+            //隐藏,显示信息的表单
+            $("#showMessageBox").hide();
+
+            /*根据学生编号查询*/
+            $("#searchStuIdBtn").click(function () {
+                var StuId = $("#searchStuId").val();
+                if (StuId.length === 0) {
+                    $("#showMessageBox").fadeOut(100, "linear");
+                    alert("输入的学生编号格式错误,请重新输入");
+                    return;
+                }
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"queryStuId": "" + StuId},
+                    success: function (resultStr) {
+                        if (resultStr === "NO") {
+                            $("#showMessageBox").fadeOut(100, "linear");
+                            alert("查询的学生编号:" + StuId + " 不存在");
+                            return;
+                        }
+                        student = JSON.parse(resultStr);
+                        var parse = JSON.parse(resultStr);
+                        $("#inputName").val(parse.stuName);
+                        $("#inputAccount").val(parse.stuAccount);
+                        $("#inputPassword").val(parse.stuPassword);
+                        $("#inputBriefIntroduction").val(parse.stuBriefIntroduction);
+
+                        //显示,显示信息的表单
+                        $("#showMessageBox").fadeIn(300, "linear");
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+
+            /*根据学生账号查询*/
+            $("#searchStuAccountBtn").click(function () {
+                var StuAccount = $("#searchAccount").val();
+                if (StuAccount.length < 4) {
+                    $("#showMessageBox").fadeOut(100, "linear");
+                    alert("输入的学生账号格式错误,请重新输入");
+                    return;
+                }
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"queryStuAccount": "" + StuAccount},
+                    success: function (resultStr) {
+                        if (resultStr === "NO") {
+                            $("#showMessageBox").fadeOut(100, "linear");
+                            alert("查询的学生账号:" + StuAccount + " 不存在");
+                            return;
+                        }
+                        student = JSON.parse(resultStr);
+                        var parse = JSON.parse(resultStr);
+                        $("#inputName").val(parse.stuName);
+                        $("#inputAccount").val(parse.stuAccount);
+                        $("#inputPassword").val(parse.stuPassword);
+                        $("#inputBriefIntroduction").val(parse.stuBriefIntroduction);
+
+                        //显示,显示信息的表单
+                        $("#showMessageBox").fadeIn(300, "linear");
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+
+            /*把修改后的学生账号提交*/
+            $("#submitBtn").click(function () {
+                student.stuName = $("#inputName").val();
+                student.stuAccount = $("#inputAccount").val();
+                student.stuPassword = $("#inputPassword").val();
+                student.stuBriefIntroduction = $("#inputBriefIntroduction").val();
+
+                var studentJSON = JSON.stringify(student);
+
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"alterStudentMessage": studentJSON},
+                    success: function (resultStr) {
+                        if (resultStr === "alterSuccess") {
+                            alert('学生:"' + student.stuName + '"的信息修改成功!');
+                        } else {
+                            alert('学生:"' + student.stuName + '"的信息修改失败!');
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">修改学生信息页面</h1>
+<div id="search">
+
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="searchStuId" class="col-md-1 control-label">学生编号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="searchStuId" placeholder="请输入要搜索的学生编号" required="required">
+        </div>
+    </div>
+
+
+    <div class="form-group inputStyle">
+        <label for="searchAccount" class="col-md-1 control-label">学生账号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="searchAccount" placeholder="请输入要搜索的学生账号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group buttonBox" style="margin-top: -10px">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="searchStuIdBtn">
+                按编号查询
+            </button>
+            <button type="button" class="btn btn-success buttonStyle" style="margin-left: 100px; font-size: 20px"
+                    id="searchStuAccountBtn">按账号查询
+            </button>
+        </center>
+    </div>
+</div>
+
+<div class="mainBox" style="margin-top: 70px;" id="showMessageBox">
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="inputName" class="col-md-1 control-label">学生姓名:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputName" placeholder="请输入学生姓名" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputAccount" class="col-md-1 control-label">学生账号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputAccount" placeholder="请输入学生账号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputPassword" class="col-md-1 control-label">学生密码:</label>
+        <div class="col-md-11">
+            <input type="password" class="form-control" id="inputPassword" placeholder="请输入学生密码" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputBriefIntroduction" class="col-md-1 control-label">学生备注:</label>
+        <div class="col-md-11">
+            <textarea class="form-control textareaStyle" rows="3" id="inputBriefIntroduction"
+                      placeholder="请输入备注"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group buttonBox">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="submitBtn">修改</button>
+        </center>
+    </div>
+</div>
+</body>
+</html>

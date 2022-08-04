@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*所有主标题的定义*/
+.mainTitle {
+    text-align: center;
+    color: rgb(109, 97, 234);
+    font-family: 楷体, 微软雅黑, serif;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.trStyle {
+    font-size: 20px;
+}
+
+/*显示总条数的label*/
+#showSumBox {
+    display: inline-block;
+    float: right;
+    width: 100px;
+    color: rgb(117, 106, 235);
+    text-align: right;
+    font-family: 楷体, 微软雅黑, serif;
+}
+
+/*把元素转为行内块元素*/
+.transitionInline-block {
+    display: inline-block;
+}
+
+/*所有input输入框的样式*/
+.inputStyle {
+    height: 50px;
+    margin-bottom: 20px;
+    align-items: center;
+    line-height: 34px;
+}
+
+/*所有textarea输入框的样式*/
+.textareaStyle {
+    height: 150px;
+    margin-bottom: 20px;
+    align-items: center;
+    resize: none;
+}
+
+/*装按钮的盒子*/
+.buttonBox {
+    width: 100%;
+    height: 50px;
+    margin-top: 70px;
+    font-size: 34px;
+}
+
+/*盒子里的按钮*/
+.buttonStyle {
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    font-family: 楷体, 微软雅黑, serif;
+}
+
+/*表单的样式*/
+.tableStyle {
+    margin-top: 30px;
+}
+
+.tableStyle tr td {
+    text-align: center;
+    font-family: 楷体, 微软雅黑, serif;
+}
+
+.tableTitle {
+    font-size: 24px;
+    font-family: 楷体, 微软雅黑, serif;
+    font-weight: 900;
+    color: rgb(118, 105, 248);
+}
+
+.tdStyle {
+    max-width: 290px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.delLink {
+    color: rgb(118, 105, 248);
+}
+
+.delLink:hover {
+    color: rgb(118, 105, 248);
+}
+
+.startShowTimeStyle {
+    font-size: 24px;
+    font-family: 楷体, 微软雅黑, serif;
+    font-weight: 900;
+    color: green;
+}
+
+.endShowTimeStyle {
+    font-size: 24px;
+    font-family: 楷体, 微软雅黑, serif;
+    font-weight: 900;
+    color: #de0919;
+    float: right;
+}
+
+.messageText {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 28px;
+    font-family: 楷体, 微软雅黑, serif;
+    font-weight: 900;
+    color: green;
+}
+
+.topicLabelStyle {
+    font-family: 楷体, 微软雅黑, serif;
+    margin-top: 30px;
+    margin-left: 10px;
+    color: black;
+    font-size: 30px;
+    text-indent: 2em;
+    font-weight: 400;
+}
+
+.topicBox {
+    margin-bottom: 50px;
+}
+
+.topicStyle {
+    font-size: 35px;
+    display: inline-block;
+}
+
+.gradeLabel {
+    color: red;
+    font-family: 楷体, 微软雅黑, serif;
+    margin-left: 50px;
+    font-size: 35px;
+}
+
+.optionsBox {
+    margin-left: 150px;
+    margin-bottom: 30px;
+    vertical-align: middle;
+}
+
+.optionsLable {
+    height: 30px;
+    font-size: 27px;
+    line-height: 27px;
+    margin-right: 60px;
+    vertical-align: middle;
+}
+
+.inputBox {
+    height: 17px;
+    width: 17px;
+}
+
+.inputRadioBox {
+    height: 17px;
+    width: 17px;
+}
+
+.answerInput {
+    border: none;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 200px;
+    vertical-align: text-bottom;
+    border-bottom: 2px black solid;
+    font-weight: bolder;
+    color: green;
+}
+
+.answerInput:focus {
+    outline: 0;
+    border-bottom: 2px black solid;
+}

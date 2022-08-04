@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加学生信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <style>
+        .lookLink {
+            color: rgb(109, 97, 234);
+        }
+
+        .lookLink:hover {
+            text-decoration: underline;
+        }
+
+        .hand:hover {
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            function TestPaperSet() {
+                this.tpId = -1;
+                this.headline = "";
+                this.subtitle = "";
+                this.entTime = Date();
+                //用来判断这场考试的试卷是否已经全部批改完成
+                this.grade = false;
+            }
+
+            $.ajax({
+                url: "/stuQueryTestPaperServlet",
+                type: "post",
+                data: {"query_all_tpSet": "query"},
+                success: function (resultStr) {
+                    /*存储接收到的所有学生信息*/
+                    let testPaperSet = JSON.parse(resultStr);
+                    let num = 0;
+                    for (let index = 0; index < testPaperSet.length; index++) {
+                        if (testPaperSet[index].grade === true) {
+                            num++;
+                        }
+                    }
+
+                    $("#showSumBox").text("未批改完成数量:" + num + " 条");
+                    if (testPaperSet.length === 0) {
+                        return;
+                    }
+
+                    for (let i = 0; i < testPaperSet.length && i < 8; i++) {
+                        let tr = $("<tr class='trStyle hand' ></tr>");
+                        let td_1 = $("<td>" + testPaperSet[i].tpId + "</td>");
+                        let td_2 = $("<td style='text-align: left'>" + testPaperSet[i].headline + "</td>");
+                        let td_3 = $("<td style='text-align: left'>" + testPaperSet[i].subtitle + "</td>");
+                        let tDate = new Date();
+                        tDate.setTime(parseInt(testPaperSet[i].entTime));
+                        let td_4 = $("<td style='text-align: left'>" + tDate.getFullYear() + "-" + tDate.getMonth() + "-" + tDate.getDay() + ":" + tDate.getHours() + "</td>");
+                        let td_5 = $("<td style='color: #f10a0a'>" + testPaperSet[i].grade + "</td>");
+
+                        tr.append(td_1);
+                        tr.append(td_2);
+                        tr.append(td_3);
+                        tr.append(td_4);
+                        tr.append(td_5);
+
+                        tr.click(function () {
+                            $.ajax({
+                                url: "/stuQueryTestPaperServlet",
+                                type: "post",
+                                data: {"get_my_stuId": ""},
+                                success: function (myId) {
+                                    if (myId === "null") {
+                                        alert("查询失败，未连接到服务器！");
+                                        return;
+                                    }
+                                    let node = "" + $(tr).children().get(0).innerHTML + "--" + myId+ "--" + "3k34klj5k345lyx";
+                                    window.location.href = "stuLookTestPaper.html?" + "node=" + node;
+                                },
+                                error() {
+                                    alert("连接服务器失败");
+                                }
+                            });
+                        });
+
+                        $("#showTable").append(tr);
+                    }
+                }
+                ,
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        })
+        ;
+
+
+        //最后展示的列表
+        /*$(function () {
+            $("#messageArea").hide();
+
+            $("#searchTPIdBtn").click(function () {
+
+                if ($("#searchInput").val().length == 0) {
+                    alert("输入的试卷编号格式错误");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/stuQueryTestPaperServlet",
+                    type: "post",
+                    data: {"query_all_Student_test_paper": $("#searchInput").val(),},
+                    success: function (resultStr) {
+                        if (resultStr === "null") {
+                            alert("试卷编号:" + $("#searchInput").val() + " 没有启用过!");
+                            return;
+                        }
+
+                        $("#searchArea").fadeOut(300, "linear");
+                        $("#showTable").fadeOut(300, "linear");
+                        $("#messageArea").fadeIn(300, "linear");
+
+                        let stpSet = JSON.parse(resultStr);
+
+                        $("#showSumBox").text("数量:" + stpSet.length + " 条");
+                        if (stpSet.length === 0) {
+                            return;
+                        }
+
+                        let pagingNum = Math.ceil(stpSet.length / 8);
+
+                        let $pagination = $(".pagination");
+                        let paging_1 = $('<li class="active"><a href="#">1<span class="sr-only"></span></a></li>');
+                        $pagination.append(paging_1);
+
+                        for (let i = 2; i <= pagingNum; i++) {
+                            let tPaging = $('<li><a href="#">' + i + '<span className="sr-only"></span></a></li>');
+                            $pagination.append(tPaging);
+                        }
+
+                        for (let i = 0; i < stpSet.length && i < 8; i++) {
+                            let node = stpSet[i].split("###");
+                            let tr = $("<tr class='trStyle'></tr>");
+                            let td_1 = $("<td class='tdStyle'>" + node[0] + "</td>");
+                            let td_2 = $("<td class='tdStyle'>" + node[1] + "</td>");
+                            let td_3 = $("<td class='tdStyle'>" + node[2] + "</td>");
+                            let td_4 = $("<td class='tdStyle'>" + node[3] + "</td>");
+                            let td_5 = $("<td><label class='lookLink'>查看</label></td>");
+                            tr.append(td_1);
+                            tr.append(td_2);
+                            tr.append(td_3);
+                            tr.append(td_4);
+                            tr.append(td_5);
+                            $("#mainTable").append(tr);
+                            $(".lookLink").click(function () {
+                                let parent = $(this).parent().parent();
+                                let node = parent.children().get(0).innerText + "--" + parent.children().get(1).innerText + "--" + parent.children().get(2).innerText;
+                                window.location.href = "lookTestPaper.html?" + "node=" + node;
+                            });
+                        }
+                        //当数据大于8条时分页
+                        if (stpSet.length > 8) {
+                            $(".pagination li").click(function () {
+                                let crtIndex = $(this).index() + 1;
+
+                                //删除除了第一行之外的所有行
+                                $("#mainTable tr").not(":eq(0)").remove();
+                                let len = crtIndex * 8 < stpSet.length ? crtIndex * 8 : stpSet.length;
+                                for (let index = crtIndex * 8 - 8; index < len; index++) {
+                                    let node = stpSet[index].split("###");
+                                    let tr = $("<tr class='trStyle'></tr>");
+                                    let td_1 = $("<td class='tdStyle'>" + node[0] + "</td>");
+                                    let td_2 = $("<td class='tdStyle'>" + node[1] + "</td>");
+                                    let td_3 = $("<td class='tdStyle'>" + node[2] + "</td>");
+                                    let td_4 = $("<td class='tdStyle'>" + node[3] + "</td>");
+                                    let td_5 = $("<td><label class='lookLink'>查看</label></td>");
+                                    tr.append(td_1);
+                                    tr.append(td_2);
+                                    tr.append(td_3);
+                                    tr.append(td_4);
+                                    tr.append(td_5);
+                                    $("#mainTable").append(tr);
+                                }
+
+                                $(".pagination li").each(function () {
+                                    $(this).removeClass();
+                                });
+
+                                $(this).addClass("active");
+
+                                $(".lookLink").click(function () {
+                                    let parent = $(this).parent().parent();
+                                    let node = parent.children().get(0).innerText + "--" + parent.children().get(1).innerText + "--" + "23k23j4j23k4jk34";
+                                    window.location.href = "lookTestPaper.html?" + "node=" + node;
+                                });
+                            });
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });*/
+
+        $(function () {
+            $("#returnSuperior").click(function () {
+                window.location.reload();
+            });
+        });
+    </script>
+</head>
+<body style="padding: 0 5%">
+<h1 class="mainTitle">查询试卷信息页面</h1>
+
+<div id="searchArea">
+    <input id="searchInput" type="number" class="form-control" style="margin-top: 50px; margin-bottom: 50px"
+           placeholder="请输入试卷编号">
+    <center>
+        <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="searchTPIdBtn">
+            搜索试卷编号
+        </button>
+    </center>
+</div>
+
+<table class="table table-hover tableStyle" id="showTable" style="margin-top: 50px">
+    <tr class="tableTitle">
+        <td>试卷编号</td>
+        <td>一级标题</td>
+        <td>二级标题</td>
+        <td>开始时间</td>
+        <td>试卷分数</td>
+    </tr>
+</table>
+</body>
+</html>

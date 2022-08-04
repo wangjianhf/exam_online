@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改教师信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            function teacherClass() {
+                this.teaId = 0;
+                this.teaName = "";
+                this.teaAccount = "";
+                this.teaPassword = "";
+                this.teaBriefIntroduction = "";
+            }
+
+            //全局变量用于存储收到的信息
+            var teacher = new teacherClass();
+
+            //隐藏,显示信息的表单
+            $("#showMessageBox").hide();
+
+            /*根据教师编号查询*/
+            $("#searchteaIdBtn").click(function () {
+                var teaId = $("#searchteaId").val();
+                if (teaId.length === 0) {
+                    $("#showMessageBox").fadeOut(100, "linear");
+                    alert("输入的教师编号格式错误,请重新输入");
+                    return;
+                }
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"queryTeaId": "" + teaId},
+                    success: function (resultStr) {
+                        if (resultStr === "NO") {
+                            $("#showMessageBox").fadeOut(100, "linear");
+                            alert("查询的教师编号:" + teaId + " 不存在");
+                            return;
+                        }
+                        teacher = JSON.parse(resultStr);
+                        var parse = JSON.parse(resultStr);
+                        $("#inputName").val(parse.teaName);
+                        $("#inputAccount").val(parse.teaAccount);
+                        $("#inputPassword").val(parse.teaPassword);
+                        $("#inputBriefIntroduction").val(parse.teaBriefIntroduction);
+
+                        //显示,显示信息的表单
+                        $("#showMessageBox").fadeIn(300, "linear");
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+
+            /*根据教师账号查询*/
+            $("#searchteaAccountBtn").click(function () {
+                var teaAccount = $("#searchAccount").val();
+                if (teaAccount.length < 4) {
+                    $("#showMessageBox").fadeOut(100, "linear");
+                    alert("输入的教师账号格式错误,请重新输入");
+                    return;
+                }
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"queryTeaAccount": "" + teaAccount},
+                    success: function (resultStr) {
+                        if (resultStr === "NO") {
+                            $("#showMessageBox").fadeOut(100, "linear");
+                            alert("查询的教师账号:" + teaAccount + " 不存在");
+                            return;
+                        }
+                        teacher = JSON.parse(resultStr);
+                        var parse = JSON.parse(resultStr);
+                        $("#inputName").val(parse.teaName);
+                        $("#inputAccount").val(parse.teaAccount);
+                        $("#inputPassword").val(parse.teaPassword);
+                        $("#inputBriefIntroduction").val(parse.teaBriefIntroduction);
+
+                        //显示,显示信息的表单
+                        $("#showMessageBox").fadeIn(300, "linear");
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+
+            /*把修改后的教师账号提交*/
+            $("#submitBtn").click(function () {
+                teacher.teaName = $("#inputName").val();
+                teacher.teaAccount = $("#inputAccount").val();
+                teacher.teaPassword = $("#inputPassword").val();
+                teacher.teaBriefIntroduction = $("#inputBriefIntroduction").val();
+
+                var teadentJSON = JSON.stringify(teacher);
+
+                $.ajax({
+                    url: "/admin_alterMessage_Servlet",
+                    type: "post",
+                    data: {"alterTeacherMessage": teadentJSON},
+                    success: function (resultStr) {
+                        if (resultStr === "alterSuccess") {
+                            alert('教师:"' + teacher.teaName + '"的信息修改成功!');
+                        } else {
+                            alert('教师:"' + teacher.teaName + '"的信息修改失败!');
+                        }
+                    },
+                    error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<h1 class="mainTitle">修改教师信息页面</h1>
+<div id="search">
+
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="searchteaId" class="col-md-1 control-label">教师编号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="searchteaId" placeholder="请输入要搜索的教师编号" required="required">
+        </div>
+    </div>
+
+
+    <div class="form-group inputStyle">
+        <label for="searchAccount" class="col-md-1 control-label">教师账号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="searchAccount" placeholder="请输入要搜索的教师账号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group buttonBox" style="margin-top: -10px">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="searchteaIdBtn">
+                按编号查询
+            </button>
+            <button type="button" class="btn btn-success buttonStyle" style="margin-left: 100px; font-size: 20px"
+                    id="searchteaAccountBtn">按账号查询
+            </button>
+        </center>
+    </div>
+</div>
+
+<div class="mainBox" style="margin-top: 70px;" id="showMessageBox">
+    <div class="form-group inputStyle" style="margin-top: 40px">
+        <label for="inputName" class="col-md-1 control-label">教师姓名:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputName" placeholder="请输入教师姓名" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputAccount" class="col-md-1 control-label">教师账号:</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="inputAccount" placeholder="请输入教师账号" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputPassword" class="col-md-1 control-label">教师密码:</label>
+        <div class="col-md-11">
+            <input type="password" class="form-control" id="inputPassword" placeholder="请输入教师密码" required="required">
+        </div>
+    </div>
+
+    <div class="form-group inputStyle">
+        <label for="inputBriefIntroduction" class="col-md-1 control-label">教师备注:</label>
+        <div class="col-md-11">
+            <textarea class="form-control textareaStyle" rows="3" id="inputBriefIntroduction"
+                      placeholder="请输入备注"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group buttonBox">
+        <center>
+            <button type="button" class="btn btn-success buttonStyle" style="font-size: 20px" id="submitBtn">修改</button>
+        </center>
+    </div>
+</div>
+</body>
+</html>

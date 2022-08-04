@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加教师信息</title>
+    <!--引用同一样式-->
+    <link href="../css/universal.css" type="text/css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/general.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            function teacherClass() {
+                this.teaId = 0;
+                this.teaName = "";
+                this.teaAccount = "";
+                this.teaPassword = "";
+                this.teaBriefIntroduction = "";
+            }
+
+            $.ajax({
+                url: "/admin_queryMessage_Servlet",
+                type: "post",
+                data: {"queryAllTeacherMessage": "query"},
+                success: function (resultStr) {
+                    /*存储接收到的所有教师信息*/
+                    var teachers = JSON.parse(resultStr);
+
+                    $("#showSumBox").text("数量:" + teachers.length + " 条");
+                    if (teachers.length === 0) {
+                        return;
+                    }
+
+                    var pagingNum = Math.ceil(teachers.length / 8);
+
+                    var $pagination = $(".pagination");
+                    var paging_1 = $('<li class="active"><a href="#">1<span class="sr-only"></span></a></li>');
+                    $pagination.append(paging_1);
+
+                    for (let i = 2; i <= pagingNum; i++) {
+                        var tPaging = $('<li><a href="#">' + i + '<span className="sr-only"></span></a></li>');
+                        $pagination.append(tPaging);
+                    }
+
+                    var len = teachers.length < 8 ? teachers.length : 8;
+                    for (let i = 0; i < len; i++) {
+                        var tr = $("<tr class='trStyle'></tr>");
+                        var td_1 = $("<td>" + teachers[i].teaId + "</td>");
+                        var td_2 = $("<td>" + teachers[i].teaName + "</td>");
+                        var td_3 = $("<td>" + teachers[i].teaAccount + "</td>");
+                        var td_4 = $("<td>" + teachers[i].teaPassword + "</td>");
+                        var td_5 = $("<td>" + teachers[i].teaBriefIntroduction + "</td>");
+                        tr.append(td_1);
+                        tr.append(td_2);
+                        tr.append(td_3);
+                        tr.append(td_4);
+                        tr.append(td_5);
+                        $("#mainTable").append(tr);
+                    }
+
+                    $(".pagination li").click(function () {
+                        var crtIndex = $(this).index() + 1;
+
+                        //删除除了第一行之外的所有行
+                        $("#mainTable tr").not(":eq(0)").remove();
+                        var len = crtIndex * 8 < teachers.length ? crtIndex * 8 : teachers.length;
+                        for (let index = crtIndex * 8 - 8; index < len; index++) {
+                            var tr = $("<tr class='trStyle'></tr>");
+                            var td_1 = $("<td>" + teachers[index].teaId + "</td>");
+                            var td_2 = $("<td>" + teachers[index].teaName + "</td>");
+                            var td_3 = $("<td>" + teachers[index].teaAccount + "</td>");
+                            var td_4 = $("<td>" + teachers[index].teaPassword + "</td>");
+                            var td_5 = $("<td>" + teachers[index].teaBriefIntroduction + "</td>");
+                            tr.append(td_1);
+                            tr.append(td_2);
+                            tr.append(td_3);
+                            tr.append(td_4);
+                            tr.append(td_5);
+                            $("#mainTable").append(tr);
+                        }
+                        $(".pagination li").each(function () {
+                            $(this).removeClass();
+                        });
+                        $(this).addClass("active");
+                    });
+                },
+                error() {
+                    alert("连接服务器失败");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body style="padding: 0 5%">
+<h1 class="mainTitle">查询教师信息页面</h1>
+<label id="showSumBox"></label>
+<table class="table table-hover tableStyle" id="mainTable">
+    <tr class="tableTitle">
+        <td>教师编号</td>
+        <td>教师编号</td>
+        <td>教师账号</td>
+        <td>教师密码</td>
+        <td>教师备注</td>
+    </tr>
+</table>
+<center style="position: fixed; top: 570px; left: 0; right: 0;">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <!--你可以给不能点击的链接添加 .disabled 类、给当前页添加 .active 类-->
+        </ul>
+    </nav>
+</center>
+</body>
+</html>

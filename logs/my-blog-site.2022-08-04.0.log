@@ -1,0 +1,953 @@
+2022-08-04 08:32:22.466  INFO 10020 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 10020 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 08:32:22.467  INFO 10020 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 08:32:22.500  INFO 10020 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 08:32:22.500  INFO 10020 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 08:32:23.536  INFO 10020 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 08:32:23.542  INFO 10020 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 08:32:23.543  INFO 10020 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 08:32:23.543  INFO 10020 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 08:32:23.587  INFO 10020 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 08:32:23.588  INFO 10020 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1087 ms
+2022-08-04 08:32:23.663  INFO 10020 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 08:32:24.504  INFO 10020 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 08:32:25.016  INFO 10020 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 08:32:25.125  WARN 10020 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 08:32:25.282  INFO 10020 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 08:32:25.307  INFO 10020 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 08:32:25.319  INFO 10020 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 08:32:25.331  INFO 10020 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 3.217 seconds (JVM running for 3.86)
+2022-08-04 08:33:14.073  INFO 10020 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 08:33:14.073  INFO 10020 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 08:33:14.074  INFO 10020 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 08:33:14.103  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 08:33:14.103  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 08:33:14.103  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 08:33:14.104  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 08:33:14.104  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : Args: [username=root&password=root, username=root&password=root]
+2022-08-04 08:33:14.178  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 08:33:14.178  INFO 10020 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 76
+2022-08-04 08:33:50.615  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 08:33:50.615  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 08:33:50.615  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 08:33:50.615  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 08:33:50.615  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : Args: [username=root&passord=root, username=root&passord=root]
+2022-08-04 08:33:50.618  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 08:33:50.618  INFO 10020 --- [http-nio-80-exec-4] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 3
+2022-08-04 08:56:15.307  INFO 10020 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 08:56:15.309  INFO 10020 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 08:56:32.878  INFO 1608 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 1608 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 08:56:32.879  INFO 1608 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 08:56:32.908  INFO 1608 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 08:56:32.909  INFO 1608 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 08:56:33.683  INFO 1608 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 08:56:33.688  INFO 1608 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 08:56:33.689  INFO 1608 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 08:56:33.689  INFO 1608 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 08:56:33.730  INFO 1608 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 08:56:33.730  INFO 1608 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 821 ms
+2022-08-04 08:56:33.825  INFO 1608 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 08:56:34.543  INFO 1608 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 08:56:34.841  INFO 1608 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 08:56:34.926  WARN 1608 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 08:56:35.051  INFO 1608 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 08:56:35.071  INFO 1608 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 08:56:35.082  INFO 1608 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 08:56:35.090  INFO 1608 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.5 seconds (JVM running for 2.999)
+2022-08-04 08:56:54.621  INFO 1608 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 08:56:54.621  INFO 1608 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 08:56:54.622  INFO 1608 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 08:56:54.647  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 08:56:54.647  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 08:56:54.647  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 08:56:54.648  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 08:56:54.648  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : Args: [username=root&passord=root, username=root&passord=root]
+2022-08-04 08:56:54.730  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 08:56:54.731  INFO 1608 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 84
+2022-08-04 09:02:13.454  INFO 1608 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:02:13.456  INFO 1608 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:02:15.696  INFO 16608 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 16608 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:02:15.697  INFO 16608 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:02:15.727  INFO 16608 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:02:15.727  INFO 16608 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:02:16.512  INFO 16608 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:02:16.517  INFO 16608 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:02:16.517  INFO 16608 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:02:16.517  INFO 16608 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:02:16.556  INFO 16608 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:02:16.556  INFO 16608 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 828 ms
+2022-08-04 09:02:16.645  INFO 16608 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:02:17.400  INFO 16608 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:02:17.729  INFO 16608 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:02:17.812  WARN 16608 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:02:17.960  INFO 16608 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:02:17.982  INFO 16608 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:02:17.992  INFO 16608 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:02:17.998  INFO 16608 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.598 seconds (JVM running for 3.14)
+2022-08-04 09:03:35.148  INFO 16608 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:03:35.150  INFO 16608 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:09:08.528  INFO 15680 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 15680 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:09:08.529  INFO 15680 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:09:08.558  INFO 15680 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:09:08.558  INFO 15680 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:09:09.398  INFO 15680 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:09:09.403  INFO 15680 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:09:09.403  INFO 15680 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:09:09.404  INFO 15680 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:09:09.446  INFO 15680 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:09:09.446  INFO 15680 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 887 ms
+2022-08-04 09:09:09.546  INFO 15680 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:09:10.316  INFO 15680 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:09:10.637  INFO 15680 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:09:10.709  WARN 15680 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:09:10.857  INFO 15680 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:09:10.880  INFO 15680 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:09:10.891  INFO 15680 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:09:10.899  INFO 15680 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.694 seconds (JVM running for 3.281)
+2022-08-04 09:09:26.429  INFO 15680 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:09:26.429  INFO 15680 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:09:26.430  INFO 15680 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:09:26.456  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:09:26.456  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:09:26.456  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:09:26.457  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:09:26.457  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : Args: [username=root&passord=root, username=root&passord=root]
+2022-08-04 09:09:26.538  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 09:09:26.538  INFO 15680 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 82
+2022-08-04 09:10:13.986  INFO 15680 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:10:13.988  INFO 15680 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:34:21.287  INFO 17804 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 17804 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:34:21.288  INFO 17804 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:34:21.317  INFO 17804 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:34:21.317  INFO 17804 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:34:22.128  INFO 17804 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:34:22.133  INFO 17804 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:34:22.134  INFO 17804 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:34:22.134  INFO 17804 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:34:22.175  INFO 17804 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:34:22.175  INFO 17804 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 857 ms
+2022-08-04 09:34:22.266  INFO 17804 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:34:22.995  INFO 17804 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:34:23.321  INFO 17804 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:34:23.402  WARN 17804 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:34:23.542  INFO 17804 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:34:23.565  INFO 17804 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:34:23.577  INFO 17804 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:34:23.585  INFO 17804 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.6 seconds (JVM running for 3.156)
+2022-08-04 09:34:26.005  INFO 17804 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:34:26.005  INFO 17804 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:34:26.006  INFO 17804 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:34:26.033  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:34:26.033  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:34:26.034  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:34:26.034  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:34:26.034  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : Args: [username=root&passord=root, null]
+2022-08-04 09:34:26.118  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 09:34:26.118  INFO 17804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 85
+2022-08-04 09:37:59.400  INFO 17804 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:37:59.401  INFO 17804 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:38:02.728  INFO 16636 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 16636 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:38:02.729  INFO 16636 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:38:02.759  INFO 16636 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:38:02.759  INFO 16636 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:38:03.540  INFO 16636 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:38:03.545  INFO 16636 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:38:03.545  INFO 16636 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:38:03.546  INFO 16636 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:38:03.585  INFO 16636 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:38:03.585  INFO 16636 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
+2022-08-04 09:38:03.673  INFO 16636 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:38:04.387  INFO 16636 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:38:04.698  INFO 16636 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:38:04.786  WARN 16636 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:38:04.923  INFO 16636 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:38:04.946  INFO 16636 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:38:04.956  INFO 16636 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:38:04.964  INFO 16636 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.546 seconds (JVM running for 3.087)
+2022-08-04 09:38:08.552  INFO 16636 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:38:08.552  INFO 16636 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:38:08.553  INFO 16636 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:38:08.588  WARN 16636 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'password' for method parameter type String is not present]
+2022-08-04 09:38:23.721  WARN 16636 --- [http-nio-80-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'password' for method parameter type String is not present]
+2022-08-04 09:40:13.332  INFO 16636 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:40:13.334  INFO 16636 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:40:15.650  INFO 18904 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 18904 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:40:15.651  INFO 18904 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:40:15.682  INFO 18904 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:40:15.682  INFO 18904 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:40:16.480  INFO 18904 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:40:16.485  INFO 18904 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:40:16.486  INFO 18904 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:40:16.486  INFO 18904 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:40:16.526  INFO 18904 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:40:16.526  INFO 18904 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 844 ms
+2022-08-04 09:40:16.617  INFO 18904 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:40:17.330  INFO 18904 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:40:17.627  INFO 18904 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:40:17.710  WARN 18904 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:40:17.834  INFO 18904 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:40:17.858  INFO 18904 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:40:17.868  INFO 18904 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:40:17.876  INFO 18904 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.524 seconds (JVM running for 3.077)
+2022-08-04 09:40:44.925  INFO 18904 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:40:44.927  INFO 18904 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:40:46.592  INFO 20328 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 20328 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:40:46.593  INFO 20328 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:40:46.623  INFO 20328 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:40:46.624  INFO 20328 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:40:47.464  INFO 20328 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:40:47.470  INFO 20328 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:40:47.470  INFO 20328 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:40:47.470  INFO 20328 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:40:47.512  INFO 20328 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:40:47.513  INFO 20328 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 889 ms
+2022-08-04 09:40:47.610  INFO 20328 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:40:48.337  INFO 20328 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:40:48.644  INFO 20328 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:40:48.728  WARN 20328 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:40:48.862  INFO 20328 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:40:48.885  INFO 20328 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:40:48.896  INFO 20328 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:40:48.904  INFO 20328 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.619 seconds (JVM running for 3.169)
+2022-08-04 09:40:53.327  INFO 20328 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:40:53.327  INFO 20328 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:40:53.327  INFO 20328 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 09:40:53.349  WARN 20328 --- [http-nio-80-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'password' for method parameter type String is not present]
+2022-08-04 09:42:01.808  INFO 20328 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:42:01.811  INFO 20328 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:42:05.179  INFO 20660 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 20660 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:42:05.180  INFO 20660 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:42:05.213  INFO 20660 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:42:05.213  INFO 20660 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:42:06.009  INFO 20660 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:42:06.014  INFO 20660 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:42:06.015  INFO 20660 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:42:06.015  INFO 20660 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:42:06.056  INFO 20660 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:42:06.056  INFO 20660 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 843 ms
+2022-08-04 09:42:06.145  INFO 20660 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:42:06.855  INFO 20660 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:42:07.166  INFO 20660 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:42:07.254  WARN 20660 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:42:07.391  INFO 20660 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:42:07.412  INFO 20660 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:42:07.423  INFO 20660 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:42:07.430  INFO 20660 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.562 seconds (JVM running for 3.133)
+2022-08-04 09:42:12.212  INFO 20660 --- [http-nio-80-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:42:12.212  INFO 20660 --- [http-nio-80-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:42:12.213  INFO 20660 --- [http-nio-80-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:42:12.238  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:42:12.239  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:42:12.239  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:42:12.239  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:42:12.240  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : Args: [username=root&passord=root, username=root&passord=root]
+2022-08-04 09:42:12.324  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 09:42:12.324  INFO 20660 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 86
+2022-08-04 09:46:16.621  INFO 20660 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:46:16.622  INFO 20660 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:46:19.952  INFO 9952 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 9952 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:46:19.953  INFO 9952 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:46:19.985  INFO 9952 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:46:19.985  INFO 9952 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:46:20.796  INFO 9952 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:46:20.801  INFO 9952 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:46:20.801  INFO 9952 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:46:20.801  INFO 9952 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:46:20.840  INFO 9952 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:46:20.840  INFO 9952 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 855 ms
+2022-08-04 09:46:20.931  INFO 9952 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:46:21.674  INFO 9952 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:46:21.980  INFO 9952 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:46:22.054  WARN 9952 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:46:22.194  INFO 9952 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:46:22.216  INFO 9952 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:46:22.227  INFO 9952 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:46:22.234  INFO 9952 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.602 seconds (JVM running for 3.16)
+2022-08-04 09:46:25.548  INFO 9952 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:46:25.548  INFO 9952 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:46:25.549  INFO 9952 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:46:25.570  WARN 9952 --- [http-nio-80-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 09:47:20.722  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:47:20.722  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:47:20.722  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:47:20.723  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:47:20.723  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 09:47:20.807  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(userid=1, nickname=管理员, username=root, password=root, introduction=管理员账号)}
+2022-08-04 09:47:20.807  INFO 9952 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 86
+2022-08-04 09:53:19.735  INFO 9952 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:53:19.737  INFO 9952 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:53:23.819  INFO 23576 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 23576 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:53:23.820  INFO 23576 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:53:23.850  INFO 23576 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:53:23.851  INFO 23576 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:53:24.666  INFO 23576 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:53:24.672  INFO 23576 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:53:24.672  INFO 23576 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:53:24.673  INFO 23576 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:53:24.713  INFO 23576 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:53:24.713  INFO 23576 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 862 ms
+2022-08-04 09:53:24.806  INFO 23576 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:53:25.548  INFO 23576 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:53:25.851  INFO 23576 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:53:25.939  WARN 23576 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:53:26.071  INFO 23576 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:53:26.095  INFO 23576 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:53:26.105  INFO 23576 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:53:26.112  INFO 23576 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.615 seconds (JVM running for 3.178)
+2022-08-04 09:53:33.412  INFO 23576 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:53:33.413  INFO 23576 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:53:33.413  INFO 23576 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 09:53:33.468  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:53:33.468  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:53:33.468  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:53:33.469  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:53:33.469  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 09:53:33.551  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(userid=1, nickname=管理员, username=root, password=root, introduction=管理员账号)}
+2022-08-04 09:53:33.551  INFO 23576 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 83
+2022-08-04 09:53:34.737  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:53:34.738  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:53:34.738  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:53:34.738  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:53:34.738  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 09:53:34.740  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(userid=1, nickname=管理员, username=root, password=root, introduction=管理员账号)}
+2022-08-04 09:53:34.740  INFO 23576 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 3
+2022-08-04 09:53:44.849  INFO 23576 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:53:44.851  INFO 23576 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:53:47.173  INFO 19804 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 19804 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:53:47.174  INFO 19804 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:53:47.206  INFO 19804 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:53:47.206  INFO 19804 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:53:48.021  INFO 19804 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:53:48.026  INFO 19804 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:53:48.027  INFO 19804 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:53:48.027  INFO 19804 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:53:48.067  INFO 19804 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:53:48.067  INFO 19804 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 861 ms
+2022-08-04 09:53:48.157  INFO 19804 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:53:48.875  INFO 19804 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:53:49.176  INFO 19804 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:53:49.258  WARN 19804 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:53:49.391  INFO 19804 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:53:49.413  INFO 19804 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:53:49.423  INFO 19804 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:53:49.431  INFO 19804 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.561 seconds (JVM running for 3.198)
+2022-08-04 09:54:00.437  INFO 19804 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:54:00.437  INFO 19804 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:54:00.438  INFO 19804 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 09:54:00.492  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 09:54:00.492  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:54:00.492  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:54:00.493  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 09:54:00.493  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 09:54:00.577  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(userid=1, nickname=管理员, username=root, password=root, introduction=管理员账号)}
+2022-08-04 09:54:00.577  INFO 19804 --- [http-nio-80-exec-1] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 86
+2022-08-04 09:56:42.254  INFO 19804 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 09:56:42.255  INFO 19804 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 09:56:46.221  INFO 8752 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 8752 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 09:56:46.222  INFO 8752 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 09:56:46.253  INFO 8752 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 09:56:46.253  INFO 8752 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 09:56:47.073  INFO 8752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 09:56:47.078  INFO 8752 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 09:56:47.079  INFO 8752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 09:56:47.079  INFO 8752 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 09:56:47.119  INFO 8752 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 09:56:47.120  INFO 8752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 867 ms
+2022-08-04 09:56:47.214  INFO 8752 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 09:56:47.960  INFO 8752 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 09:56:48.275  INFO 8752 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 09:56:48.364  WARN 8752 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 09:56:48.502  INFO 8752 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 09:56:48.525  INFO 8752 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 09:56:48.537  INFO 8752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 09:56:48.544  INFO 8752 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.642 seconds (JVM running for 3.238)
+2022-08-04 09:57:36.767  INFO 8752 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 09:57:36.768  INFO 8752 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 09:57:36.768  INFO 8752 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 09:57:36.822  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/student
+2022-08-04 09:57:36.822  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 09:57:36.823  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 09:57:36.823  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.studentLogin
+2022-08-04 09:57:36.823  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=1, password=1)]
+2022-08-04 09:57:36.917  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Student(userid=233, nickname=测试账户, username=1, password=1, introduction=测试账户)}
+2022-08-04 09:57:36.917  INFO 8752 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 95
+2022-08-04 09:59:48.162  WARN 8752 --- [http-nio-80-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 10:06:48.140  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 10:06:48.140  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 10:06:48.140  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 10:06:48.140  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 10:06:48.140  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 10:06:48.145  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(userid=1, nickname=管理员, username=root, password=root, introduction=管理员账号)}
+2022-08-04 10:06:48.145  INFO 8752 --- [http-nio-80-exec-8] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 5
+2022-08-04 10:09:12.546  WARN 8752 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 10:14:58.254  WARN 8752 --- [http-nio-80-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 10:16:48.323  INFO 8752 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 10:16:48.325  INFO 8752 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 10:16:51.570  INFO 3580 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 3580 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 10:16:51.570  INFO 3580 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 10:16:51.601  INFO 3580 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 10:16:51.601  INFO 3580 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 10:16:52.383  INFO 3580 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 10:16:52.388  INFO 3580 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 10:16:52.389  INFO 3580 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 10:16:52.389  INFO 3580 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 10:16:52.441  INFO 3580 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 10:16:52.441  INFO 3580 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 840 ms
+2022-08-04 10:16:52.535  INFO 3580 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 10:16:53.244  INFO 3580 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 10:16:53.554  INFO 3580 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 10:16:53.628  WARN 3580 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 10:16:53.756  INFO 3580 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 10:16:53.779  INFO 3580 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 10:16:53.791  INFO 3580 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 10:16:53.798  INFO 3580 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.556 seconds (JVM running for 3.107)
+2022-08-04 10:16:58.284  INFO 3580 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 10:16:58.285  INFO 3580 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 10:16:58.285  INFO 3580 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 10:16:58.309  WARN 3580 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 10:48:57.744  INFO 3580 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 10:48:57.748  INFO 3580 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 10:49:01.018  INFO 12168 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 12168 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 10:49:01.019  INFO 12168 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 10:49:01.049  INFO 12168 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 10:49:01.049  INFO 12168 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 10:49:01.850  INFO 12168 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 10:49:01.855  INFO 12168 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 10:49:01.856  INFO 12168 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 10:49:01.856  INFO 12168 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 10:49:01.897  INFO 12168 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 10:49:01.897  INFO 12168 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 847 ms
+2022-08-04 10:49:01.994  INFO 12168 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 10:49:02.723  INFO 12168 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 10:49:03.034  INFO 12168 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 10:49:03.109  WARN 12168 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 10:49:03.243  INFO 12168 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 10:49:03.267  INFO 12168 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 10:49:03.278  INFO 12168 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 10:49:03.285  INFO 12168 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.581 seconds (JVM running for 3.145)
+2022-08-04 10:49:07.646  INFO 12168 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 10:49:07.646  INFO 12168 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 10:49:07.647  INFO 12168 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 10:49:10.970  WARN 12168 --- [http-nio-80-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 10:57:10.698  INFO 12168 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 10:57:10.700  INFO 12168 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 10:57:13.016  INFO 19408 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 19408 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 10:57:13.017  INFO 19408 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 10:57:13.048  INFO 19408 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 10:57:13.048  INFO 19408 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 10:57:13.845  INFO 19408 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 10:57:13.851  INFO 19408 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 10:57:13.851  INFO 19408 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 10:57:13.851  INFO 19408 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 10:57:13.891  INFO 19408 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 10:57:13.891  INFO 19408 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 842 ms
+2022-08-04 10:57:13.986  INFO 19408 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 10:57:14.726  INFO 19408 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 10:57:15.037  INFO 19408 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 10:57:15.122  WARN 19408 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 10:57:15.257  INFO 19408 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 10:57:15.281  INFO 19408 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 10:57:15.292  INFO 19408 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 10:57:15.299  INFO 19408 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.584 seconds (JVM running for 3.139)
+2022-08-04 10:57:27.076  INFO 19408 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 10:57:27.077  INFO 19408 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 10:57:27.078  INFO 19408 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 10:57:27.131  WARN 19408 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 10:57:53.027  WARN 19408 --- [http-nio-80-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 10:59:56.881  WARN 19408 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-08-04 11:00:25.138  WARN 19408 --- [http-nio-80-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-08-04 11:00:50.459  INFO 19408 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 11:00:50.461  INFO 19408 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 11:00:52.884  INFO 15604 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 15604 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 11:00:52.885  INFO 15604 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 11:00:52.917  INFO 15604 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 11:00:52.917  INFO 15604 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 11:00:53.829  INFO 15604 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 11:00:53.834  INFO 15604 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 11:00:53.835  INFO 15604 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 11:00:53.835  INFO 15604 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 11:00:53.876  INFO 15604 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 11:00:53.876  INFO 15604 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 958 ms
+2022-08-04 11:00:53.969  INFO 15604 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 11:00:54.694  INFO 15604 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 11:00:55.011  INFO 15604 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 11:00:55.097  WARN 15604 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 11:00:55.232  INFO 15604 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 11:00:55.255  INFO 15604 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 11:00:55.268  INFO 15604 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 11:00:55.276  INFO 15604 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.706 seconds (JVM running for 3.303)
+2022-08-04 11:00:55.299  INFO 15604 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:00:55.299  INFO 15604 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 11:00:55.299  INFO 15604 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 11:01:00.312  WARN 15604 --- [http-nio-80-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:01:06.487  WARN 15604 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-08-04 11:02:36.090  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/student
+2022-08-04 11:02:36.090  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 11:02:36.090  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 11:02:36.091  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.studentLogin
+2022-08-04 11:02:36.091  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=1, password=1)]
+2022-08-04 11:02:36.189  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Student(userid=233, nickname=测试账户, username=1, password=1, introduction=测试账户)}
+2022-08-04 11:02:36.189  INFO 15604 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 100
+2022-08-04 11:06:07.039  WARN 15604 --- [http-nio-80-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:06:20.630  INFO 15604 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 11:06:20.633  INFO 15604 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 11:06:24.031  INFO 25504 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 25504 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 11:06:24.032  INFO 25504 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 11:06:24.062  INFO 25504 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 11:06:24.062  INFO 25504 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 11:06:24.848  INFO 25504 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 11:06:24.853  INFO 25504 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 11:06:24.854  INFO 25504 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 11:06:24.854  INFO 25504 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 11:06:24.894  INFO 25504 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 11:06:24.894  INFO 25504 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 831 ms
+2022-08-04 11:06:24.989  INFO 25504 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 11:06:25.712  INFO 25504 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 11:06:26.014  INFO 25504 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 11:06:26.100  WARN 25504 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 11:06:26.228  INFO 25504 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 11:06:26.249  INFO 25504 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 11:06:26.259  INFO 25504 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 11:06:26.268  INFO 25504 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.538 seconds (JVM running for 3.096)
+2022-08-04 11:06:33.983  INFO 25504 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:06:33.983  INFO 25504 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 11:06:33.984  INFO 25504 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 11:06:34.040  WARN 25504 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:12:31.029  INFO 25504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 11:12:31.031  INFO 25504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 11:12:34.353  INFO 14876 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 14876 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 11:12:34.354  INFO 14876 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 11:12:34.386  INFO 14876 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 11:12:34.386  INFO 14876 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 11:12:35.215  INFO 14876 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 11:12:35.220  INFO 14876 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 11:12:35.221  INFO 14876 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 11:12:35.221  INFO 14876 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 11:12:35.262  INFO 14876 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 11:12:35.262  INFO 14876 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 875 ms
+2022-08-04 11:12:35.365  INFO 14876 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 11:12:36.105  INFO 14876 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 11:12:36.454  INFO 14876 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 11:12:36.530  WARN 14876 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 11:12:36.661  INFO 14876 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 11:12:36.683  INFO 14876 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 11:12:36.693  INFO 14876 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 11:12:36.701  INFO 14876 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.669 seconds (JVM running for 3.282)
+2022-08-04 11:12:42.554  INFO 14876 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:12:42.554  INFO 14876 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 11:12:42.554  INFO 14876 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 11:12:42.610  WARN 14876 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:18:45.799  INFO 14876 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 11:18:45.801  INFO 14876 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 11:18:49.164  INFO 24988 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 24988 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 11:18:49.165  INFO 24988 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 11:18:49.197  INFO 24988 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 11:18:49.198  INFO 24988 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 11:18:49.998  INFO 24988 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 11:18:50.003  INFO 24988 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 11:18:50.003  INFO 24988 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 11:18:50.004  INFO 24988 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 11:18:50.047  INFO 24988 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 11:18:50.047  INFO 24988 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 848 ms
+2022-08-04 11:18:50.146  INFO 24988 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 11:18:50.867  INFO 24988 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 11:18:51.207  INFO 24988 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 11:18:51.282  WARN 24988 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 11:18:51.412  INFO 24988 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 11:18:51.434  INFO 24988 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 11:18:51.445  INFO 24988 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 11:18:51.453  INFO 24988 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.59 seconds (JVM running for 3.13)
+2022-08-04 11:18:56.844  INFO 24988 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 11:18:56.847  INFO 24988 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 11:19:00.111  INFO 22380 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 22380 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 11:19:00.112  INFO 22380 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 11:19:00.144  INFO 22380 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 11:19:00.144  INFO 22380 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 11:19:00.946  INFO 22380 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 11:19:00.952  INFO 22380 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 11:19:00.952  INFO 22380 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 11:19:00.952  INFO 22380 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 11:19:00.995  INFO 22380 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 11:19:00.996  INFO 22380 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 852 ms
+2022-08-04 11:19:01.096  INFO 22380 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 11:19:01.821  INFO 22380 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 11:19:02.163  INFO 22380 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 11:19:02.238  WARN 22380 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 11:19:02.368  INFO 22380 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 11:19:02.392  INFO 22380 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 11:19:02.403  INFO 22380 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 11:19:02.410  INFO 22380 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.607 seconds (JVM running for 3.15)
+2022-08-04 11:19:15.528  INFO 22380 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:19:15.529  INFO 22380 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 11:19:15.529  INFO 22380 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 11:19:15.583  WARN 22380 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:31:10.335  WARN 22380 --- [http-nio-80-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 11:31:43.412  WARN 22380 --- [http-nio-80-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 14:02:10.907  INFO 22380 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:02:10.910  INFO 22380 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 14:02:14.405  INFO 2476 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 2476 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 14:02:14.406  INFO 2476 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 14:02:14.438  INFO 2476 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 14:02:14.438  INFO 2476 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 14:02:15.302  INFO 2476 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 14:02:15.308  INFO 2476 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 14:02:15.308  INFO 2476 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 14:02:15.308  INFO 2476 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 14:02:15.348  INFO 2476 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 14:02:15.349  INFO 2476 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 910 ms
+2022-08-04 14:02:15.443  INFO 2476 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 14:02:16.178  INFO 2476 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 14:02:16.514  INFO 2476 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 14:02:16.588  WARN 2476 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 14:02:16.723  INFO 2476 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 14:02:16.746  INFO 2476 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 14:02:16.756  INFO 2476 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 14:02:16.764  INFO 2476 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.674 seconds (JVM running for 3.315)
+2022-08-04 14:03:35.913  INFO 2476 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:03:35.916  INFO 2476 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 14:03:38.188  INFO 8864 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 8864 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 14:03:38.189  INFO 8864 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 14:03:38.220  INFO 8864 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 14:03:38.221  INFO 8864 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 14:03:39.055  INFO 8864 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 14:03:39.061  INFO 8864 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 14:03:39.061  INFO 8864 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 14:03:39.061  INFO 8864 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 14:03:39.104  INFO 8864 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 14:03:39.104  INFO 8864 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 883 ms
+2022-08-04 14:03:39.200  INFO 8864 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 14:03:39.926  INFO 8864 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 14:03:40.278  INFO 8864 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 14:03:40.359  WARN 8864 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 14:03:40.494  INFO 8864 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 14:03:40.517  INFO 8864 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 14:03:40.528  INFO 8864 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 14:03:40.536  INFO 8864 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.664 seconds (JVM running for 3.249)
+2022-08-04 14:03:45.705  INFO 8864 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 14:03:45.706  INFO 8864 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 14:03:45.706  INFO 8864 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 14:04:00.618  WARN 8864 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 14:06:28.556  WARN 8864 --- [http-nio-80-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 14:08:15.202  INFO 8864 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:08:15.204  INFO 8864 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 14:08:18.622  INFO 19512 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 19512 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 14:08:18.623  INFO 19512 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 14:08:18.656  INFO 19512 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 14:08:18.656  INFO 19512 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 14:08:19.501  INFO 19512 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 14:08:19.507  INFO 19512 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 14:08:19.507  INFO 19512 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 14:08:19.507  INFO 19512 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 14:08:19.551  INFO 19512 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 14:08:19.552  INFO 19512 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 895 ms
+2022-08-04 14:08:19.651  INFO 19512 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 14:08:20.376  INFO 19512 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 14:08:20.721  INFO 19512 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 14:08:20.799  WARN 19512 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 14:08:20.925  INFO 19512 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 14:08:20.947  INFO 19512 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 14:08:20.958  INFO 19512 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 14:08:20.965  INFO 19512 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.677 seconds (JVM running for 3.33)
+2022-08-04 14:08:32.062  INFO 19512 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 14:08:32.062  INFO 19512 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 14:08:32.063  INFO 19512 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 14:08:32.118  WARN 19512 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 14:17:59.445  INFO 19512 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:17:59.448  INFO 19512 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 14:18:03.067  INFO 14504 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 14504 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 14:18:03.068  INFO 14504 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 14:18:03.099  INFO 14504 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 14:18:03.099  INFO 14504 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 14:18:03.913  INFO 14504 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 14:18:03.917  INFO 14504 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 14:18:03.917  INFO 14504 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 14:18:03.917  INFO 14504 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 14:18:03.959  INFO 14504 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 14:18:03.959  INFO 14504 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 859 ms
+2022-08-04 14:18:04.058  INFO 14504 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 14:18:04.805  INFO 14504 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 14:18:05.197  INFO 14504 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 14:18:05.279  WARN 14504 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 14:18:05.413  INFO 14504 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 14:18:05.439  INFO 14504 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 14:18:05.453  INFO 14504 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 14:18:05.462  INFO 14504 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.715 seconds (JVM running for 3.291)
+2022-08-04 14:18:07.447  INFO 14504 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 14:18:07.447  INFO 14504 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 14:18:07.448  INFO 14504 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 14:18:07.503  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/student
+2022-08-04 14:18:07.503  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 14:18:07.503  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 14:18:07.504  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.studentLogin
+2022-08-04 14:18:07.504  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=1, password=1)]
+2022-08-04 14:18:07.587  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Student(stuId=233, stuName=测试账户, stuAccount=1, stuPassword=1, stuBriefIntroduction=测试账户)}
+2022-08-04 14:18:07.587  INFO 14504 --- [http-nio-80-exec-2] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 84
+2022-08-04 14:21:48.960  INFO 14504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:21:48.961  INFO 14504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 14:21:51.388  INFO 12756 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 12756 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 14:21:51.389  INFO 12756 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 14:21:51.420  INFO 12756 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 14:21:51.420  INFO 12756 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 14:21:52.236  INFO 12756 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 14:21:52.242  INFO 12756 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 14:21:52.243  INFO 12756 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 14:21:52.243  INFO 12756 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 14:21:52.289  INFO 12756 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 14:21:52.289  INFO 12756 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 868 ms
+2022-08-04 14:21:52.399  INFO 12756 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 14:21:53.212  INFO 12756 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 14:21:53.601  INFO 12756 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 14:21:53.691  WARN 12756 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 14:21:53.841  INFO 12756 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 14:21:53.867  INFO 12756 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 14:21:53.879  INFO 12756 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 14:21:53.887  INFO 12756 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.828 seconds (JVM running for 3.457)
+2022-08-04 14:21:58.043  INFO 12756 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 14:21:58.044  INFO 12756 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 14:21:58.045  INFO 12756 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 14:22:06.610  WARN 12756 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 14:28:27.722  INFO 12756 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 14:28:27.724  INFO 12756 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:06:36.555  INFO 8472 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 8472 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:06:36.556  INFO 8472 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:06:36.587  INFO 8472 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:06:36.588  INFO 8472 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:06:37.435  INFO 8472 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:06:37.441  INFO 8472 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:06:37.442  INFO 8472 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:06:37.442  INFO 8472 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:06:37.488  INFO 8472 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:06:37.488  INFO 8472 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 900 ms
+2022-08-04 15:06:37.601  INFO 8472 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:06:38.346  INFO 8472 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:06:38.717  INFO 8472 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:06:38.796  WARN 8472 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:06:38.929  INFO 8472 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:06:38.954  INFO 8472 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:06:38.965  INFO 8472 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:06:38.973  INFO 8472 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.779 seconds (JVM running for 3.416)
+2022-08-04 15:06:47.605  INFO 8472 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:06:47.605  INFO 8472 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:06:47.607  INFO 8472 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:06:52.000  WARN 8472 --- [http-nio-80-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:07:27.968  INFO 8472 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:07:27.970  INFO 8472 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:07:30.366  INFO 12840 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 12840 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:07:30.366  INFO 12840 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:07:30.400  INFO 12840 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:07:30.400  INFO 12840 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:07:31.245  INFO 12840 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:07:31.251  INFO 12840 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:07:31.251  INFO 12840 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:07:31.251  INFO 12840 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:07:31.295  INFO 12840 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:07:31.295  INFO 12840 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 894 ms
+2022-08-04 15:07:31.392  INFO 12840 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:07:32.136  INFO 12840 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:07:32.492  INFO 12840 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:07:32.568  WARN 12840 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:07:32.698  INFO 12840 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:07:32.722  INFO 12840 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:07:32.733  INFO 12840 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:07:32.741  INFO 12840 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.687 seconds (JVM running for 3.293)
+2022-08-04 15:08:14.170  INFO 12840 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:08:14.170  INFO 12840 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:08:14.170  INFO 12840 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 15:08:14.227  WARN 12840 --- [http-nio-80-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:08:19.148  WARN 12840 --- [http-nio-80-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:08:21.013  WARN 12840 --- [http-nio-80-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:08:32.481  WARN 12840 --- [http-nio-80-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:09:23.233  INFO 12840 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:09:23.236  INFO 12840 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:09:25.612  INFO 2508 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 2508 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:09:25.613  INFO 2508 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:09:25.650  INFO 2508 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:09:25.650  INFO 2508 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:09:26.486  INFO 2508 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:09:26.492  INFO 2508 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:09:26.492  INFO 2508 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:09:26.492  INFO 2508 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:09:26.535  INFO 2508 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:09:26.536  INFO 2508 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 886 ms
+2022-08-04 15:09:26.638  INFO 2508 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:09:27.358  INFO 2508 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:09:27.708  INFO 2508 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:09:27.783  WARN 2508 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:09:27.915  INFO 2508 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:09:27.939  INFO 2508 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:09:27.949  INFO 2508 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:09:27.956  INFO 2508 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.661 seconds (JVM running for 3.283)
+2022-08-04 15:09:32.557  INFO 2508 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:09:32.557  INFO 2508 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:09:32.558  INFO 2508 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:09:35.158  WARN 2508 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:14:15.581  WARN 2508 --- [http-nio-80-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.exam.online.bean.LogInModel` from Array value (token `JsonToken.START_ARRAY`)<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]]
+2022-08-04 15:31:02.382  INFO 2508 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:31:02.385  INFO 2508 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:31:05.750  INFO 22692 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 22692 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:31:05.751  INFO 22692 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:31:05.784  INFO 22692 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:31:05.784  INFO 22692 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:31:06.623  INFO 22692 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:31:06.628  INFO 22692 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:31:06.629  INFO 22692 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:31:06.629  INFO 22692 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:31:06.671  INFO 22692 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:31:06.671  INFO 22692 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 886 ms
+2022-08-04 15:31:06.776  INFO 22692 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:31:07.530  INFO 22692 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:31:07.887  INFO 22692 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:31:07.966  WARN 22692 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:31:08.114  INFO 22692 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:31:08.140  INFO 22692 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:31:08.151  INFO 22692 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:31:08.160  INFO 22692 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.722 seconds (JVM running for 3.296)
+2022-08-04 15:31:12.107  INFO 22692 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:31:12.107  INFO 22692 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:31:12.108  INFO 22692 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:31:14.916  WARN 22692 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 15:32:00.206  INFO 22692 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:32:00.209  INFO 22692 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:32:02.528  INFO 14172 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 14172 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:32:02.529  INFO 14172 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:32:02.559  INFO 14172 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:32:02.560  INFO 14172 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:32:03.342  INFO 14172 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:32:03.347  INFO 14172 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:32:03.348  INFO 14172 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:32:03.348  INFO 14172 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:32:03.390  INFO 14172 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:32:03.390  INFO 14172 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 830 ms
+2022-08-04 15:32:03.484  INFO 14172 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:32:04.191  INFO 14172 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:32:04.569  INFO 14172 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:32:04.652  WARN 14172 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:32:04.787  INFO 14172 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:32:04.812  INFO 14172 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:32:04.823  INFO 14172 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:32:04.832  INFO 14172 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.616 seconds (JVM running for 3.219)
+2022-08-04 15:32:11.604  INFO 14172 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:32:11.604  INFO 14172 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:32:11.605  INFO 14172 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:32:15.336  WARN 14172 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 15:38:26.642  INFO 14172 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:38:26.644  INFO 14172 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:38:28.971  INFO 1624 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 1624 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:38:28.972  INFO 1624 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:38:29.003  INFO 1624 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:38:29.003  INFO 1624 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:38:29.818  INFO 1624 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:38:29.824  INFO 1624 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:38:29.824  INFO 1624 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:38:29.824  INFO 1624 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:38:29.866  INFO 1624 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:38:29.866  INFO 1624 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 863 ms
+2022-08-04 15:38:29.965  INFO 1624 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:38:30.699  INFO 1624 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:38:31.074  INFO 1624 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:38:31.152  WARN 1624 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:38:31.290  INFO 1624 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:38:31.313  INFO 1624 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:38:31.324  INFO 1624 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:38:31.331  INFO 1624 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.666 seconds (JVM running for 3.233)
+2022-08-04 15:38:56.954  INFO 1624 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:38:56.956  INFO 1624 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:38:59.286  INFO 8688 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 8688 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:38:59.287  INFO 8688 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:38:59.319  INFO 8688 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:38:59.319  INFO 8688 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:39:00.118  INFO 8688 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:39:00.123  INFO 8688 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:39:00.123  INFO 8688 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:39:00.123  INFO 8688 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:39:00.162  INFO 8688 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:39:00.163  INFO 8688 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 844 ms
+2022-08-04 15:39:00.252  INFO 8688 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:39:01.066  INFO 8688 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:39:01.454  INFO 8688 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:39:01.541  WARN 8688 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:39:01.699  INFO 8688 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:39:01.726  INFO 8688 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:39:01.738  INFO 8688 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:39:01.747  INFO 8688 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.772 seconds (JVM running for 3.355)
+2022-08-04 15:39:05.776  INFO 8688 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:39:05.776  INFO 8688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:39:05.777  INFO 8688 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:39:08.852  WARN 8688 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 15:40:25.394  INFO 8688 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 15:40:25.396  INFO 8688 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 15:40:27.752  INFO 16816 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 16816 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 15:40:27.753  INFO 16816 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 15:40:27.786  INFO 16816 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 15:40:27.787  INFO 16816 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 15:40:28.599  INFO 16816 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 15:40:28.604  INFO 16816 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 15:40:28.605  INFO 16816 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 15:40:28.605  INFO 16816 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 15:40:28.645  INFO 16816 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 15:40:28.645  INFO 16816 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 858 ms
+2022-08-04 15:40:28.736  INFO 16816 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 15:40:29.443  INFO 16816 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 15:40:29.754  INFO 16816 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 15:40:29.828  WARN 16816 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 15:40:29.959  INFO 16816 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 15:40:29.982  INFO 16816 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 15:40:29.992  INFO 16816 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 15:40:30.000  INFO 16816 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.586 seconds (JVM running for 3.165)
+2022-08-04 15:40:31.966  INFO 16816 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 15:40:31.966  INFO 16816 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 15:40:31.967  INFO 16816 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-04 15:40:34.980  WARN 16816 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 16:25:34.428  INFO 16816 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-08-04 16:25:34.434  INFO 16816 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-08-04 16:25:36.145  INFO 26020 --- [  restartedMain] com.exam.online.ApplicationStart         : Starting ApplicationStart using Java 1.8.0_202 on ROG with PID 26020 (E:\project\IntelliJ IDEA\examonline\target\classes started by WangJian in E:\project\IntelliJ IDEA\examonline)
+2022-08-04 16:25:36.146  INFO 26020 --- [  restartedMain] com.exam.online.ApplicationStart         : No active profile set, falling back to 1 default profile: "default"
+2022-08-04 16:25:36.185  INFO 26020 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-08-04 16:25:36.185  INFO 26020 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-08-04 16:25:37.005  INFO 26020 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2022-08-04 16:25:37.010  INFO 26020 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-80"]
+2022-08-04 16:25:37.010  INFO 26020 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-04 16:25:37.010  INFO 26020 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-04 16:25:37.050  INFO 26020 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-04 16:25:37.050  INFO 26020 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 864 ms
+2022-08-04 16:25:37.146  INFO 26020 --- [  restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-08-04 16:25:37.865  INFO 26020 --- [  restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-08-04 16:25:38.168  INFO 26020 --- [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2022-08-04 16:25:38.251  WARN 26020 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-08-04 16:25:38.382  INFO 26020 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-04 16:25:38.405  INFO 26020 --- [  restartedMain] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-80"]
+2022-08-04 16:25:38.415  INFO 26020 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2022-08-04 16:25:38.422  INFO 26020 --- [  restartedMain] com.exam.online.ApplicationStart         : Started ApplicationStart in 2.613 seconds (JVM running for 3.176)
+2022-08-04 16:25:42.521  INFO 26020 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 16:25:42.521  INFO 26020 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-04 16:25:42.521  INFO 26020 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-04 16:25:46.474  WARN 26020 --- [http-nio-80-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false'); nested exception is com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'username': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 10]]
+2022-08-04 16:32:38.447  WARN 26020 --- [http-nio-80-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2022-08-04 16:34:45.455  WARN 26020 --- [http-nio-80-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.exam.online.utils.AjaxResult com.exam.online.controller.LoginController.adminLogin(com.exam.online.bean.LogInModel)]
+2022-08-04 16:34:59.422  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 16:34:59.423  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 16:34:59.423  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 16:34:59.423  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 16:34:59.424  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 16:34:59.510  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(admId=1, admName=管理员, admAccount=root, admPassword=root, admBriefIntroduction=管理员账号)}
+2022-08-04 16:34:59.510  INFO 26020 --- [http-nio-80-exec-7] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 88
+2022-08-04 16:35:17.499  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 16:35:17.500  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 16:35:17.500  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 16:35:17.500  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 16:35:17.500  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 16:35:17.508  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(admId=1, admName=管理员, admAccount=root, admPassword=root, admBriefIntroduction=管理员账号)}
+2022-08-04 16:35:17.509  INFO 26020 --- [http-nio-80-exec-5] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 10
+2022-08-04 16:35:38.096  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 16:35:38.096  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 16:35:38.096  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 16:35:38.096  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 16:35:38.096  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=孙强, password=null)]
+2022-08-04 16:35:38.099  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=用户名或密码错误, code=500}
+2022-08-04 16:35:38.099  INFO 26020 --- [http-nio-80-exec-6] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 3
+2022-08-04 16:35:54.939  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : URL: http://localhost/login/admin
+2022-08-04 16:35:54.939  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : HTTP_METHOD: POST
+2022-08-04 16:35:54.940  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : IP: 0:0:0:0:0:0:0:1
+2022-08-04 16:35:54.940  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : CLASS_METHOD: com.exam.online.controller.LoginController.adminLogin
+2022-08-04 16:35:54.940  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : Args: [LogInModel(username=root, password=root)]
+2022-08-04 16:35:54.943  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : RESPONSE: {msg=登陆成功, code=200, data=Admin(admId=1, admName=管理员, admAccount=root, admPassword=root, admBriefIntroduction=管理员账号)}
+2022-08-04 16:35:54.943  INFO 26020 --- [http-nio-80-exec-3] com.exam.online.aspect.WebLogAspect      : SPEND TIME: 4

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员界面</title>
+    <meta name="viewport"
+          content="width=adminSubpage-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="icon" href="../images/hkzd.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/page.css"/>
+    <link href="../plugins/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../plugins/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/iconfont/iconfont.css" rel="stylesheet" type="text/css">
+
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/adminHome.js"></script>
+    <script src="../js/general.js"></script>
+    <style>
+        a {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        .unable {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+
+        #exitBtn {
+            position: fixed;
+            right: 10px;
+            top: 13.5px;
+            z-index: 999;
+            background-color: #4CAF50;`
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 5px;
+            width: 160px;
+            text-align: center;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #exitBtn:after {
+            content: "";
+            background: #90EE90;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        #exitBtn:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+    </style>
+
+    <script>
+        $(function () {
+            $("#exitBtn").click(function () {
+                $.ajax({
+                    url: "/exitLogin",
+                    type: "post",
+                    data: {"type": "teacher"},
+                    success: function (resultStr) {
+                        if (resultStr === "OK") {
+                            window.location.href = "/index.html";
+                        }
+                    }, error() {
+                        alert("连接服务器失败");
+                    }
+                });
+            });
+        })
+    </script>
+
+</head>
+<body>
+
+<button id="exitBtn">退出登录</button>
+
+<div class="page" id="app">
+    <div class="nav-left" v-show="navLeftFlag" ref="navLeft">
+        <div class="LogoName unable">在线考试系统</div>
+        <div class="navDiv">
+            <a href="adminSubpage/explain.html" class="li-a-a" target="iframe">
+                <div class="navName" style="color: rgb(117,105,248)">系统后台[教师端]:系统说明</div>
+            </a>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a" target="iframe"><i class="iconfont icon-chaxun"></i>
+                            试卷信息<i
+                                    class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box">
+                            <a href="teacherSubpage/queryTestPaper.html" class="li-a-a" target="iframe">输入编号批改</a>
+                            <a href="teacherSubpage/addTestTopic.html" class="li-a-a" target="iframe">添加试卷信息</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a" target="iframe"><i class="iconfont icon-chaxun"></i>
+                            查询信息<i class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box">
+                            <a href="adminSubpage/queryStudentMessage.html" class="li-a-a" target="iframe">查询学生信息</a>
+                            <a href="teacherSubpage/querySingleChoice..html" class="li-a-a" target="iframe">查询单选题信息</a>
+                            <a href="teacherSubpage/queryMultipleChoiceQuestion..html" class="li-a-a" target="iframe">查询多选题信息</a>
+                            <a href="teacherSubpage/queryJudgeQuestion..html" class="li-a-a" target="iframe">查询判断题信息</a>
+                            <a href="teacherSubpage/queryGapFilling..html" class="li-a-a" target="iframe">查询填空题信息</a>
+                            <a href="teacherSubpage/queryEssayQuestion..html" class="li-a-a" target="iframe">查询简答题信息</a>
+                        </div>
+                    </li>
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a" target="iframe"><i class="iconfont icon-tianjia"></i>
+                            添加信息<i
+                                    class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box">
+                            <a href="adminSubpage/addStudentMessage.html" class="li-a-a" target="iframe">添加学生信息</a>
+                            <a href="teacherSubpage/addTopic.html" class="li-a-a" target="iframe">添加题目信息</a>
+                        </div>
+                    </li>
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a"><i class="iconfont icon-xiugai"></i> 修改信息<i
+                                class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box">
+                            <a href="adminSubpage/alterStudentMessage.html" class="li-a-a" target="iframe">修改学生信息</a>
+                        </div>
+                    </li>
+                    <li class="nav-tab nav-ul">
+                        <a href="javascript:void[0]" class="li-a"><i class="iconfont icon-shanchu"></i> 删除信息<i
+                                class='bx bx-chevron-right' style="float: right;"></i></a>
+                        <div class="nav-box">
+                            <a href="adminSubpage/delStudentMessage.html" class="li-a-a" target="iframe">删除学生信息</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="nav-right" ref="navRight">
+        <div class="nav-top">
+            <button type="button" class="btn btn-primary btn-sm hiddenBtn" style="line-height: 10px;"
+                    @click="isShowLeft">
+                <i class="bx bx-grid-alt" style="font-size: 16px;"></i>
+            </button>
+        </div>
+        <div class="content-page" ref="cPage">
+            <iframe name="iframe" width="100%" height="100%" frameborder="0" src="adminSubpage/explain.html"></iframe>
+        </div>
+    </div>
+</div>
+
+<!--下拉列表js代码-->
+<script type="text/javascript">
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            navLeftFlag: true
+        },
+        methods: {
+            isShowLeft() {
+                if (this.navLeftFlag) {
+                    this.$refs.navRight.style.paddingLeft = '0px'
+                    this.$refs.cPage.style.left = '0px';
+                    this.navLeftFlag = false;
+                } else {
+                    this.$refs.navRight.style.paddingLeft = '240px';
+                    this.$refs.cPage.style.left = '240px';
+                    this.navLeftFlag = true;
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
