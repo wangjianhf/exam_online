@@ -13,7 +13,7 @@
     <!--  日志文件储存地址, 通过application配置文件传入  -->
 <!--    <springProperty scope="context" name="LOG_PATH" source="logback.logDir" />-->
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_PATH" value="E:/logs/examonline"/>
+    <property name="LOG_PATH" value="E:/logs/exam_online"/>
 
     <!--  控制台彩色日志格式  -->
     <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
