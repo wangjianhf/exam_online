@@ -24,7 +24,7 @@ $(document).ready(function () {
                 let httpCode = AjaxResult.code;
                 let msg = AjaxResult.msg;
                 if (httpCode === 200) {
-                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html";
+                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html" + "?username=" + logInModel.username + "&password=" + logInModel.password;
                 } else {
                     alert(msg);
                 }
