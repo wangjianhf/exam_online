@@ -14,6 +14,8 @@ $(document).ready(function () {
 
         let logInModel = {username: $.trim($("#username").val()), password: $.trim($("#password").val())};
 
+        let params = "?username=" + logInModel.username + "&password=" + logInModel.password;
+
         $.ajax({
             url: requestURL,
             type: "POST",
@@ -24,7 +26,7 @@ $(document).ready(function () {
                 let httpCode = AjaxResult.code;
                 let msg = AjaxResult.msg;
                 if (httpCode === 200) {
-                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html" + "?username=" + logInModel.username + "&password=" + logInModel.password;
+                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html";
                 } else {
                     alert(msg);
                 }
