@@ -5,30 +5,26 @@ $(document).ready(function () {
         let requestURL = "/login";
 
         if (role === "0") {
-            requestURL = requestURL + "/admin";
+            requestURL += "/admin";
         } else if (role === "1") {
-            requestURL = requestURL + "/teacher";
+            requestURL += "/teacher";
         } else if (role === "2") {
-            requestURL = requestURL + "/student";
+            requestURL += "/student";
         }
 
-        let username = $.trim($("#username").val());
-        let password = $.trim($("#password").val());
-
-        let jsonData = {"username": username, "password": password};
-
-        console.log(jsonData);
+        let logInModel = {username: $.trim($("#username").val()), password: $.trim($("#password").val())};
 
         $.ajax({
             url: requestURL,
             type: "POST",
-            contentType: "application/json;charset=utf-8",
-            data: jsonData,
+            contentType: "application/json",
+            data: JSON.stringify(logInModel),
+            dataType: "json",
             success: function (AjaxResult) {
                 let httpCode = AjaxResult.code;
                 let msg = AjaxResult.msg;
                 if (httpCode === 200) {
-                    window.location.href = requestURL.slice(7, requestURL.length - 7) + "Home.html？username=" + username + "&password=" + password;
+                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html";
                 } else {
                     alert(msg);
                 }
