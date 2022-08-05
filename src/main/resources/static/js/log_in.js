@@ -1,32 +1,30 @@
 $(document).ready(function () {
 
     $("#log_in_btn").click(function () {
-        let role = $("#identity > input:checked").val();
-        let requestURL = "/login";
 
-        if (role === "0") {
-            requestURL += "/admin";
-        } else if (role === "1") {
-            requestURL += "/teacher";
-        } else if (role === "2") {
-            requestURL += "/student";
-        }
-
-        let logInModel = {username: $.trim($("#username").val()), password: $.trim($("#password").val())};
-
-        let params = "?username=" + logInModel.username + "&password=" + logInModel.password;
+        let user = {
+            userid: "",
+            nickname: "",
+            username: $.trim($("#username").val()),
+            password: $.trim($("#password").val()),
+            userrole: $.trim($("#identity > input:checked").val()),
+            introduce: ""
+        };
 
         $.ajax({
-            url: requestURL,
+            url: "/login",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify(logInModel),
+            data: JSON.stringify(user),
             dataType: "json",
             success: function (AjaxResult) {
                 let httpCode = AjaxResult.code;
                 let msg = AjaxResult.msg;
                 if (httpCode === 200) {
-                    window.location.href = "/html/" + requestURL.slice(7, requestURL.length) + "Home.html";
+                    user = AjaxResult.data;
+                    sessionStorage.setItem(user.userid, JSON.stringify(user));
+                    console.log(JSON.parse(sessionStorage.getItem(user.userid)));
+                    window.location.href = "/html/" + user.userrole + "Home.html";
                 } else {
                     alert(msg);
                 }

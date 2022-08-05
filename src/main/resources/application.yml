@@ -8,7 +8,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver # mysql8 的连接驱动
-    url: jdbc:mysql://localhost:3306/examinationsystem?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/exam_online?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     type: com.alibaba.druid.pool.DruidDataSource # 指定数据源类型
 
     ########## 连接池 配置 ##########
@@ -99,7 +99,6 @@ spring:
 Server:
   port: 80
 
-
 mybatis:
   #配置映射文件
   mapper-locations: classpath:mapper/*.xml
@@ -108,16 +107,3 @@ mybatis:
   # 打印 *mapper.xml中的SQL到控制台
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-
-
-
-
-
-
-
-#logging:
-#  file:
-#    path: E:\logs
-#  charset:
-#    console: utf-8
