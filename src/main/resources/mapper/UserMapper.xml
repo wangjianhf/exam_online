@@ -10,5 +10,4 @@
         where username = #{username}
           AND password = #{password};
     </select>
-
 </mapper>

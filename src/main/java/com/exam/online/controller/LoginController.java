@@ -1,10 +1,12 @@
 package com.exam.online.controller;
 
-import com.exam.online.bean.*;
+import com.exam.online.bean.User;
 import com.exam.online.service.LoginService;
 import com.exam.online.utils.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginController {
@@ -13,7 +15,7 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping("/login")
-    public AjaxResult adminLogin(@RequestBody User user) {
+    public AjaxResult userLogin(@RequestBody User user) {
         return data(loginService.login(user));
     }
 
