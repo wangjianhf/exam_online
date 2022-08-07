@@ -71,7 +71,7 @@
         $(function () {
             $("#exitBtn").click(function () {
                 $.ajax({
-                    url: "/exitLogin",
+                    url: "/sign_out",
                     type: "post",
                     data: {"type": "admin"},
                     success: function (resultStr) {
