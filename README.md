@@ -1,5 +1,7 @@
 #项目来源
-# https://gitee.com/iostream_xin/Online-examination-system.git
+https://gitee.com/iostream_xin/Online-examination-system.git
+
+# 前后端不分离
 
 # Springboot改造
 
